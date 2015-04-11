@@ -7,21 +7,35 @@ body {
 	font-family: var(--main-serif);
 }
 
+.largefocus {
+	font-family: var(--main-sans);
+	font-size:22px;
+}
+
+
 /**
  * The main page search bar.
  */
-#searchbar {
+#searchbar input {
+	font-family: var(--main-sans);
+	font-size:16px;
 }
 
 /**
  * The vertically-compressed search bar at the top.
  */
 #minisearchbar {
+	overflow-x: visible;
+	background-color:#F0F0F0;
+	margin-top:-10px;
+	margin-left:-50px;
+	margin-right:-50px;
+	margin-bottom:-10px;
 }
 
 #minisearchbar #logo {
 	height: 0px;
-	margin-top: 5px;
+	padding-top: 15px;
 }
 
 #minisearchbar #inputbox {
