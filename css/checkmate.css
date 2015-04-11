@@ -1,3 +1,23 @@
+:root {
+	--main-serif: "Bree Serif", serif;
+	--main-sans: "Roboto", sans-serif;
+}
+
 body {
-	font: Bree Serif;
+	font-family: var(--main-serif);
+}
+
+/**
+ * The reusable component at the top right,
+ * consisting of the user's account name plus various icons.
+ */
+#controlpanel {
+	position:fixed; 
+	right:20px; 
+	top:0px;
+}
+
+#controlpanel p {
+	font-family: var(--main-sans);
+	font-size: 16px;
 }
