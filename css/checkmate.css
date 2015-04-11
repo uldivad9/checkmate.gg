@@ -8,16 +8,57 @@ body {
 }
 
 /**
+ * The main page search bar.
+ */
+#searchbar {
+}
+
+/**
+ * The vertically-compressed search bar at the top.
+ */
+#minisearchbar {
+}
+
+#minisearchbar #logo {
+	height: 0px;
+	margin-top: 5px;
+}
+
+#minisearchbar #inputbox {
+	height: 50px;
+	padding-top: 50px;
+}
+
+#minisearchbar input {
+	font-family: var(--main-sans);
+	font-size:16px;
+}
+
+/**
  * The reusable component at the top right,
  * consisting of the user's account name plus various icons.
  */
 #controlpanel {
 	position:fixed; 
-	right:20px; 
-	top:0px;
+	right:10px; 
+	top:10px;
+	height:80px;
+	
 }
 
-#controlpanel p {
+#controlpanel #cp_div_username {
+	margin: 5px;
+}
+
+#controlpanel #username {
 	font-family: var(--main-sans);
-	font-size: 16px;
+}
+
+#controlpanel #cp_div_buttons {
+	display: inline-block;
+}
+
+#controlpanel #cp_div_buttons span {
+	float: left;
+	margin: 5px;
 }
