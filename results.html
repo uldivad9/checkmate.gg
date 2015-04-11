@@ -1,20 +1,98 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <!--<title>Ready, Set, Translate !</title>
-    <link type="text/css" href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
-    <link type="text/css" href="translate_game.css" rel="stylesheet" />
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="external_js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript">
+	$(window).load(function() {
+		
+		//This script extracts parameters from the URL
+		//from jquery-howto.blogspot.com
+		$.extend({
+			getUrlVars : function() {
+				var vars = [], hash;
+				var hashes = window.location.href.slice(
+						window.location.href.indexOf('?') + 1).split('&');
+				for ( var i = 0; i < hashes.length; i++) {
+					hash = hashes[i].split('=');
+					vars.push(hash[0]);
+					vars[hash[0]] = hash[1];
+				}
+				return vars;
+			},
+			getUrlVar : function(name) {
+				return $.getUrlVars()[name];
+			}
+		});
+		
+		console.log($.getUrlVar("tags"));
+		
+		//#######################################################################################################
+		/**
+		 * Backend sh*t should actually be happening to determine the search results. 
+		 * For now, the results are going to be populated regardless of the tags searched >.>
+		 */
+		//#######################################################################################################
+		
+		// MAGIC HAPPENS
+		/**
+		 * 'results' should be sorted by display order, with results[0] displayed first.
+		 * Each result item will be of the form:
+		 * {
+		 * id: 'Resource id'
+		 * name: pls
+		 * description: Short description to be shown under the title
+		 * score: Upvote/downvote score
+		 * rating: Approximate rating of target audience. An array of two integers.
+		 * url: External url
+		 * favorite: Boolean, true if this result is favorited by the logged-in user 
+			//not sure if this should be calculated backend or frontend
+		 */
+		results = [
+		{id: 1337420,
+		name: "TEST RESOURCE",
+		description: "I AM TEST RESOURCE",
+		score: 0,
+		rating: [0,0],
+		url: "about:blank",
+		favorite: false},
+		
+		{id: 1337421,
+		name: "TEST RESOURCE TWO",
+		description: "I AM ALSO TEST RESOURCE",
+		score: 10,
+		rating: [10,10],
+		url: "google.com",
+		favorite: true},
+		]
+		
+		
+	});
+</script>
+</head>
+<body>
 
-    <script type="text/javascript" src="jquery/js/jquery-1.9.0.min.js"></script>
-    <script type="text/javascript" src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-    <script type="text/javascript" src="dicts.json"></script>
-    <script type="text/javascript" src="translate_game.js"></script>-->
 
-  </head>
-  <body>
-	<!-- hello i am dummy file -->
-	
-  </body>
+
+<center>
+	<div style="height:0px; margin-top:5px;">
+		<img alt="Checkmate.gg logo" id="logo_main" src="assets/logo_main.png" width="180px" height="60px">
+	</div>
+	<div style="height:50px; padding-top:50px">
+		<form>
+		<input type="text" name="search" size="90" autofocus="false">
+		</form>
+	</div>
+</center>
+
+<div>
+	<div style="position:fixed; right:20px; top:0px">
+		<div>
+		
+		</div>
+	</div>
+</div>
+
+</body>
 </html>
