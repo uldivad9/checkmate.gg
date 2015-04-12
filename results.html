@@ -55,35 +55,68 @@
 		 */
 		searchResults = [
 		{id: 1337420,
-		name: "TEST RESOURCE",
-		description: "I AM TEST RESOURCE",
+		name: "Test Resource",
+		description: "I am a test resource",
 		score: 0,
-		rating: [0,0],
+		rating: [1200,1400],
 		url: "about:blank",
 		favorite: false},
 		
 		{id: 1337421,
-		name: "TEST RESOURCE TWO",
-		description: "I AM ALSO TEST RESOURCE",
+		name: "Test Resource Kai",
+		description: "I am also a test resource",
 		score: 10,
-		rating: [10,10],
+		rating: [1400,1400],
+		url: "google.com",
+		favorite: true},
+		
+		{id: 1337421,
+		name: "Test Resource Kai Ni",
+		description: "This resource was upgraded so much that the text of the description is really long; long enough to require word wrapping.",
+		score: -10,
+		rating: [1000,2000],
 		url: "google.com",
 		favorite: true},
 		]
 		//#######################################################################################################
 		
-		
 		placeTopOfPage();
+		
+		var placeResult = function(result) {
+			$("#resultlisting").append("<div class=\"searchresult\">");
+			$(".searchresult:last").append("<div class=\"leftcol\"></div><div class=\"rightcol\"></div>");
+			$(".leftcol:last").append("<div class=\"name\"></div><div class=\"description\"></div>");
+			$(".name:last").append("<span></span>");
+			$(".name:last > span").text(result.name);
+			$(".description:last").append("<span></span>");
+			$(".description:last > span").text(result.description);
+			$(".rightcol:last").append("<div class=\"buttonpane\"></div><hr width=\"100%\" size=\"1\" style=\"margin:0px; color:gainsboro;\"></hr><div class=\"rating\"></div>");
+			$(".buttonpane:last").append("<div class=\"button\"><span class=\"ui-icon ui-icon-heart\"></span></div><div class=\"button\"><span class=\"ui-icon ui-icon-extlink\"></span></div><div class=\"scorewidget\"></div>");
+			$(".scorewidget:last").append("<div class=\"scorebuttons\"><span class=\"ui-icon ui-icon-triangle-1-n\"></span><span class=\"ui-icon ui-icon-triangle-1-s\"></span></div>");
+			$(".scorewidget:last").append("<div class=\"score\"><span></span></div>");
+			if (result.score > 0) {
+				$(".score:last > span").text("+"+result.score);
+			} else {
+				$(".score:last > span").text(result.score);
+			}
+			$(".rating:last").append("<span></span>");
+			if (result.rating[0] === result.rating[1]) {
+				$(".rating:last > span").text("Rating: ~"+result.rating[0]);
+			} else {
+				$(".rating:last > span").text("Rating: "+result.rating[0]+"-"+result.rating[1]);
+			}
+		}
+		
 		
 		for (var i=0; i<searchResults.length; i++) {
 			result = searchResults[i];
 			
-			
-			
-			
+			placeResult(result);
 		}
 		
-		
+		$("#logo_main").click(function() {
+			window.location.href = "./main.html";
+		});
 		
 	});
 </script>
@@ -91,38 +124,53 @@
 <body>
 
 <!-- i feel so empty -->
-<hr width="200%" size="1"/ style="margin-left:-10px; color:gray;">
 
-
-<div style="margin-top:10px; position:absolute; right:62%;">
-<span class="largefocus">Search Results:</span>
+<div style="margin-top:10px">
+<div style="width:62%; float:right; visibility:hidden;">inazuma is my waifu</div>
+<div style="float:right;">
+<span class="large" style="text-transform:capitalize; color:#1C1C1C">Search Results:</span>
+</div>
 </div>
 
-
-
-<div>
+<div id="resultlisting" class="resultlisting">
 	
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
+
+<!-- KEEP THIS FOR REFERENCE
+<div class="searchresult" >
+	<div class="leftcol">
+		<div class="name">
+			<span>
+				Openings for Aggression
+			</span>
+		</div>
+		<div class="description">
+			<span>
+			Description text should go here. Sometimes the text might go on and on, requiring me to write a lot of random filler text to fill this textbox. Asdf asdf asdf asdf.
+			</span>
+		</div>
+	</div>
+	<div class="rightcol">
+		<div class="buttonpane">
+			<div class="button"><span class="ui-icon ui-icon-heart"></span></div>
+			<div class="button"><span class="ui-icon ui-icon-extlink"></span></div>
+			<div class="scorewidget">
+				<div class="scorebuttons">
+					<span class="ui-icon ui-icon-triangle-1-n"></span>
+					<span class="ui-icon ui-icon-triangle-1-s"></span>
+				</div>
+				<div class="score">
+					<span>+5</span>
+				</div>
+			</div>
+		</div>
+		<hr width="100%" size="1" style="margin:0px; color:gainsboro;"></hr>
+		<div class="rating">
+			<span>Rating: ~1600</span>
+		</div>
+	</div>
+</div>
+-->

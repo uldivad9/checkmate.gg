@@ -2,29 +2,90 @@
 
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link type="text/css" href="css/checkmate.css" rel="stylesheet" />
-  <link type="text/css" href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
-  <script type="text/javascript" src="js/global.js"></script>
-  <script type="text/javascript" src="jquery/jquery-1.9.0.min.js"></script>
-  <script type="text/javascript" src="jquery/jquery-ui-1.10.0.custom.min.js"></script>
-  <script type="text/javascript">
-  $(window).load(function() {
-
-
-
-
-    placeTopOfPage();
-    
-    
-    
-    
-  });
-  </script>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" href="css/checkmate.css" rel="stylesheet" />
+<link type="text/css" href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="jquery/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="jquery/jquery-ui-1.10.0.custom.min.js"></script>
+<script type="text/javascript">
+	$(window).load(function() {
+		
+		//This script extracts parameters from the URL
+		//from jquery-howto.blogspot.com
+		$.extend({
+			getUrlVars : function() {
+				var vars = [], hash;
+				var hashes = window.location.href.slice(
+						window.location.href.indexOf('?') + 1).split('&');
+				for ( var i = 0; i < hashes.length; i++) {
+					hash = hashes[i].split('=');
+					vars.push(hash[0]);
+					vars[hash[0]] = hash[1];
+				}
+				return vars;
+			},
+			getUrlVar : function(name) {
+				return $.getUrlVars()[name];
+			}
+		});
+		
+		console.log($.getUrlVar("id"));
+		//#######################################################################################################
+		/**
+		 * 'id' should be resource's unique id. 
+		 * Backend stuff should actually happen here to return the resource data.
+		 * For now, zenbu wa hado codo (everything's hardcoded)
+		 */
+		//#######################################################################################################
+		
+		// MAGIC HAPPENS
+		/**
+		 * 'resourceInfo' should be an object containing information to populate the summary page with.
+		 * It should be of the form:
+		 * {
+		 * id: 'Resource id'
+		 * name: pls
+		 * fullDescription: Long description of the resource
+		 * score: Upvote/downvote score
+		 * rating: Approximate rating of target audience. An array of two integers.
+		 * url: External url
+		 * favorite: Boolean, true if this result is favorited by the logged-in user 
+			//not sure if this should be calculated backend or frontend
+		 * reviews: An object containing information about reviews.
+		 *   {
+		 *   rid: 'Review id'
+		 *   text: Review text
+		 *   author: Author's username
+		 *   uuid: Author's 'unique username id'
+		 *   }
+		 */
+		
+		resourceInfo = {
+		id: 1337420,
+		name: "Test Resource",
+		fullDescription: "I am a test resource. State Highway 73 begins at State Highway 34 south of Hammon. The western terminus of the highway occurs at a jog in the Roger Mills-Custer county line; north of the intersection, SH-34 runs along the north-south boundary, and at the intersection, the boundary makes a ninety-degree turn to head east-west. The first 0.8 miles (1.3 km) of SH-73 straddles the county line. The county line makes another turn after this to return to a north-south orientation, and SH-73 fully enters Custer County.",
+		score: 0,
+		rating: [1200,1400],
+		url: "about:blank",
+		favorite: false,
+		reviews: [{
+			rid: 12345,
+			text: "A top quality introduction to a less common but powerful opening. Great for intermediates.",
+			author: "infinitestory",
+			uuid: 9001,
+		}],
+		};
+		
+		placeTopOfPage();
+		
+		
+		
+		
+	});
+</script>
 </head>
 <body>
-  <hr width="200%" size="1"/ style="margin-left:-10px; color:gray;">
 
 
   <div class="summary_page_section">
@@ -43,12 +104,5 @@
     <span><strong>Reviews:</strong></span>
     <p>A top quality introduction to a less common but powerful opening.  Great for intermediates.</p>
   </div>
-
-
-
-  <div>
-
-  </div>
-
 </body>
 </html>

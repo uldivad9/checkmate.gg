@@ -1,6 +1,7 @@
 :root {
 	--main-serif: "Bree Serif", serif;
 	--main-sans: "Roboto", sans-serif;
+	--text-color: #1C1C1C;
 }
 
 body {
@@ -12,6 +13,10 @@ body {
 	font-size:22px;
 }
 
+.large {
+	font-family: var(--main-sans);
+	font-size:18px;
+}
 
 /**
  * The main page search bar.
@@ -53,7 +58,7 @@ body {
  * consisting of the user's account name plus various icons.
  */
 #controlpanel {
-	position:fixed; 
+	position:absolute; 
 	right:10px; 
 	top:10px;
 	height:80px;
@@ -77,6 +82,7 @@ body {
 	margin: 5px;
 }
 
+
 .summary_page_section {
 	border-bottom:3px solid gray;
 	width: 70%;
@@ -87,4 +93,111 @@ body {
 .resource_header {
 	float: left; width: 200px;
 	padding:5px;
+}
+
+/**
+ * Listing of search results.
+ */
+.resultlisting {
+	margin-top:70px;
+}
+
+
+/**
+ * A single search item.
+ */
+.searchresult {
+	border-radius:5px;
+	border: 1px solid gray;
+	background: whitesmoke;
+	width: 800px;
+	height: 100px;
+	margin-right:auto;
+	margin-left:auto;
+	margin-bottom:20px;
+	box-shadow: 2px 2px 1px gainsboro;
+}
+
+.searchresult .leftcol {
+	width:74%;
+	height:100%;
+	float:left;
+}
+
+.searchresult .rightcol {
+	width:25%;
+	height:100%;
+	float:right;
+}
+
+.searchresult .name {
+	height:35%;
+	margin-left:10px;
+	margin-top:8px;
+}
+
+.searchresult .name span {
+	font-family: var(--main-sans);
+	font-size:18px;
+}
+
+.searchresult .description {
+	height:55%;
+	margin-left:10px;
+	color: var(--text-color);
+	/*background:gainsboro;*/
+}
+
+.searchresult .description span {
+	font-family: var(--main-sans);
+	font-size:14px;
+}
+
+.searchresult .buttonpane {
+	height:45%;
+	padding:0px;
+	margin:0px;
+	margin-bottom:2.5%;
+	
+}
+
+.searchresult .buttonpane .button {
+	float:right;
+	margin-top:20px;
+	margin-right:35px;
+}
+
+.searchresult .buttonpane .scorewidget {
+	float:right;
+	margin-top:12px;
+	margin-right:30px;
+}
+
+.searchresult .buttonpane .scorewidget .scorebuttons {
+	float:right;
+}
+
+.searchresult .buttonpane .scorewidget .score {
+	float:right;
+	margin-top:6px;
+}
+
+.searchresult .buttonpane .scorewidget .score span{
+	font-family: var(--main-serif);
+	font-size:16px;
+}
+
+.searchresult .rating {
+	height:45%;
+	text-align:center;
+	margin-top:12px;
+	margin-left:auto;
+	margin-right:auto;
+	/*background:gainsboro;*/
+}
+
+.searchresult .rating span {
+	font-family: var(--main-sans);
+	font-size: 16px;
+	color: var(--text-color);
 }
