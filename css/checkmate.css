@@ -10,7 +10,7 @@ body {
 
 .largefocus {
 	font-family: var(--main-sans);
-	font-size:22px;
+	font-size:30px;
 }
 
 .large {
@@ -84,15 +84,18 @@ body {
 
 
 .summary_page_section {
-	border-bottom:3px solid gray;
 	width: 70%;
 	margin-left:auto;
 	margin-right:auto;
 }
 
 .resource_header {
-	float: left; width: 200px;
-	padding:5px;
+	float: left; 
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-top:3px solid gray;
 }
 
 /**
