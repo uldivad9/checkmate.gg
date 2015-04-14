@@ -225,16 +225,10 @@ body {
 	margin-top:-5px;
 }
 
-.summary_page .description span {
-	font-family: var(--main-sans);
-	font-size:16px;
+.resource_tags {
+	text-align: right;
 }
 
-.summary_page .reviewsection span {
-	
-}
-
-.summary_page .review {
-	margin-top:20px;
-	font-size:15px;
+.add_review_button {
+	text-align: center;
 }
