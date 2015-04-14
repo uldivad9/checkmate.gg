@@ -6,6 +6,8 @@
 
 body {
 	font-family: var(--main-serif);
+    margin-left:0px;
+    margin-right:0px;
 }
 
 .largefocus {
@@ -33,8 +35,6 @@ body {
 	overflow-x: visible;
 	background-color:#F0F0F0;
 	margin-top:-10px;
-	margin-left:-50px;
-	margin-right:-50px;
 	margin-bottom:-10px;
 }
 
@@ -170,7 +170,7 @@ body {
 }
 
 .searchresult .buttonpane .scorewidget .score span{
-	font-family: var(--main-serif);
+	font-family: var(--main-sans);
 	font-size:16px;
 }
 

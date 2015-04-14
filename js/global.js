@@ -8,7 +8,7 @@ var placeControlPanel = function() {
 }
 
 var placeMiniSearchBar = function() {
-	$(document.body).prepend("<hr width=\"200%\" size=\"1\" style=\"margin-left:-10px; color:gainsboro;\"></hr>");
+	$(document.body).prepend("<hr width=\"100%\" size=\"1\" style=\"color:gainsboro;\"></hr>");
 	$(document.body).prepend("<div id=\"minisearchbar\"></div>");
 	$("#minisearchbar").append("<center><div id=\"logo\"></div><div id=\"inputbox\"></div></center>");
 	$("#logo").append("<a href=\"./main.html\"><img id=\"logo_main\" src=\"assets/logo_main.png\" width=\"180px\" height=\"60px\" alt=\"Checkmate.gg logo\"></a>");
