@@ -12,8 +12,13 @@
 	$(window).load(function() {
 		placeControlPanel();
 		
-		$("#btn_search").click(function() {
+		$("#searchbar").submit(function() {
+			console.log("enter");
 			window.location.href = "./results.html?tags="+$("#searchfield").val();
+		});
+		
+		$("#btn_search").click(function() {
+			$("#searchbar").submit();
 		});
 	});
 </script>
@@ -25,7 +30,7 @@
 			<img alt="Checkmate.gg logo" id="logo_main" src="assets/logo_main.png" style="padding-top:120px">
 		</div>
 		<div id="searchbar" style="height:50px">
-			<form>
+			<form onsubmit="return false;">
 			<input type="text" id="searchfield" size="90" autofocus="true">
 			</form>
 		</div>

@@ -77,9 +77,9 @@ body {
 	display: inline-block;
 }
 
-#controlpanel #cp_div_buttons span {
+#controlpanel #cp_div_buttons * {
 	float: left;
-	margin: 5px;
+	margin: 4px;
 }
 
 /**
@@ -203,8 +203,6 @@ body {
 	float: left; 
 	padding-left:15px;
 	padding-right:15px;
-	padding-top:8px;
-	padding-bottom:8px;
 	border-top:3px solid gray;
 }
 
@@ -212,13 +210,25 @@ body {
 	font-family: var(--main-sans);
 }
 
+.summary_page .ratingpanel {
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
 .summary_page .scorepanel {
 	border-left: 3px solid gray;
 	border-right: 3px solid gray;
+	padding-top:15px;
+	padding-bottom:15px;
 }
 
 .summary_page .scorepanel div {
 	float:left;
+}
+
+.summary_page .heartpanel {
+	padding-top:8px;
+	padding-bottom:8px;
 }
 
 .summary_page .scorepanel .scorebuttons {
