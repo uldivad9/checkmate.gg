@@ -208,6 +208,10 @@ body {
 	border-top:3px solid gray;
 }
 
+.summary_page .resource_header span {
+	font-family: var(--main-sans);
+}
+
 .summary_page .scorepanel {
 	border-left: 3px solid gray;
 	border-right: 3px solid gray;
@@ -219,4 +223,18 @@ body {
 
 .summary_page .scorepanel .scorebuttons {
 	margin-top:-5px;
+}
+
+.summary_page .description span {
+	font-family: var(--main-sans);
+	font-size:16px;
+}
+
+.summary_page .reviewsection span {
+	
+}
+
+.summary_page .review {
+	margin-top:20px;
+	font-size:15px;
 }
