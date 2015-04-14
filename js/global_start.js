@@ -1,10 +1,12 @@
+var heart_button_html = "<img width=\"32px\" height=\"32px\" src=\"./assets/heart_unfilled.png\" onmouseover=\"this.src='./assets/heart_unfilled_shadow.png'\" onmouseout=\"this.src='./assets/heart_unfilled.png'\">"
+
 var placeControlPanel = function() {
 	$(document.body).prepend("<div id=\"controlpanel\"></div>");
 	$("#controlpanel").append("<center><div id=\"cp_div_username\"></div><div id=\"cp_div_buttons\"</div></center>");
 	$("#cp_div_username").append("<span id=\"username\">usernamegoeshere</span>");
 	$("#cp_div_buttons").append("<span id=\"cp_button1\" class=\"ui-icon ui-icon-person\"></span>");
 	$("#cp_div_buttons").append("<span id=\"cp_button2\" class=\"ui-icon ui-icon-gear\"></span>");
-	$("#cp_div_buttons").append("<span id=\"cp_button3\" class=\"ui-icon ui-icon-heart\"></span>");
+	$("#cp_div_buttons").append(heart_button_html);
 }
 
 var placeMiniSearchBar = function() {
