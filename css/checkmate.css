@@ -220,3 +220,11 @@ body {
 .summary_page .scorepanel .scorebuttons {
 	margin-top:-5px;
 }
+
+.resource_tags {
+	text-align: right;
+}
+
+.add_review_button {
+	text-align: center;
+}
