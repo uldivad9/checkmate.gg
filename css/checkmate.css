@@ -229,8 +229,16 @@ body {
 	font-family: var(--main-sans);
 }
 
+.summary_page .review {
+	display:inline-block;
+}
+
 .summary_page .review * {
 	font-size: 15px;
+}
+
+.summary_page .review .authordata {
+	color:gray;
 }
 
 .resource_tags {
