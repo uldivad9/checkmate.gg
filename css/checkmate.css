@@ -225,8 +225,17 @@ body {
 	margin-top:-5px;
 }
 
+.summary_page * {
+	font-family: var(--main-sans);
+}
+
+.summary_page .review * {
+	font-size: 15px;
+}
+
 .resource_tags {
 	text-align: right;
+	font-family: var(--main-sans);
 }
 
 .add_review_button {
