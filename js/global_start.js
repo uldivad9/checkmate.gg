@@ -30,7 +30,7 @@ var placeMiniSearchBar = function() {
 	$(document.body).prepend("<div id=\"minisearchbar\"></div>");
 	$("#minisearchbar").append("<center><div id=\"logo\"></div><div id=\"inputbox\"></div></center>");
 	$("#logo").append("<a href=\"./main.html\"><img id=\"logo_main\" src=\"assets/logo_main.png\" width=\"180px\" height=\"60px\" alt=\"Checkmate.gg logo\"></a>");
-	$("#inputbox").append("<form id=\"searchform\" action=\"./results.html\" method=\"get\"><input id=\"searchfield\" type=\"text\" size=\"80\"/></form>");
+	$("#inputbox").append("<form id=\"searchform\" action=\"./results.html\" method=\"get\"><input id=\"searchfield\" type=\"text\" name=\"tags\" size=\"80\"/><button type=\"submit\" style=\"display: none;\"></form>");
 	$("#searchfield").select2({tags: ['caro-kann', 'opening', 'endgame', 'midgame'], multiple: true, width: '60%', openOnEnter: false});
 	/*$("#searchform").submit(function() {
 		console.log($("#searchfield").val());
