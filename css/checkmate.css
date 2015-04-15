@@ -21,6 +21,10 @@ body {
 	font-size:18px;
 }
 
+hr {
+    clear:both;
+}
+
 /**
  * The main page search bar.
  */
@@ -232,7 +236,7 @@ body {
 
 .summary_page .scorepanel {
 	padding-top:15px;
-	padding-bottom:15px;
+	padding-bottom:5px;
 }
 
 .summary_page .scorepanel div {

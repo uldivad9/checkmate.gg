@@ -119,7 +119,7 @@
 		
 		var drawScorePanel = function() {
 			$(".scorepanel *").remove();
-			$(".scorepanel").append("<div><span><strong>User score:</strong> +"+resourceInfo.score+"</span></div>");
+			$(".scorepanel").append("<div><span>+"+resourceInfo.score+"</span></div>");
 			$(".scorepanel").append("<div class=\"scorebuttons\"></div>");
 			if (resourceInfo.vote == 0) {
 				$(".scorebuttons").append("<div>"+up_button_html+"</div><div>"+down_button_html+"</div>");
@@ -175,7 +175,7 @@
 	<div class="rightcol">
 	<div class="resource_header scorepanel">
 		<div>
-			<span><strong>User score:</strong> +35</span>
+			<span> +35</span>
 		</div>
 		<div class="scorebuttons">
 			<span class="ui-icon ui-icon-triangle-1-n"></span>
@@ -187,12 +187,10 @@
 	</div>
 	<hr width="100%" size="1" style="margin:0px; color:gainsboro;"></hr>
 	<div class="resource_header ratingpanel" style="text-align:center;">
-		<span><strong>Rating:</strong>  ~1600</span>
+		<span><strong>Elo Rating:</strong>  ~1600</span>
 	</div>
 </div>
 </div>
-    <br style="clear: left;" />
-
 	<hr width="100%" size="2" style="margin-top:20px; margin-bottom:20px; color:gainsboro;"></hr>
 	<div class="description">
 		<span>This is an intermediate-level introduction to the Caro-Kann Defense, which begins with 1e4 c6.  Players can use this reference to develop a stronger pawn structure following the opening move.</span>

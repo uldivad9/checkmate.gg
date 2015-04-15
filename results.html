@@ -151,9 +151,9 @@
 			}
 			$(".rating:last").append("<span></span>");
 			if (result.rating[0] === result.rating[1]) {
-				$(".rating:last > span").text("Rating: ~"+result.rating[0]);
+				$(".rating:last > span").html("<strong>Elo Rating:</strong> ~"+result.rating[0]);
 			} else {
-				$(".rating:last > span").text("Rating: "+result.rating[0]+"-"+result.rating[1]);
+				$(".rating:last > span").html("<strong>Elo Rating:</strong> "+result.rating[0]+"-"+result.rating[1]);
 			}
 		}
 		
