@@ -133,6 +133,12 @@ body {
 	font-size:18px;
 }
 
+.searchresult .name a {
+	font-family: var(--main-sans);
+	font-size:18px;
+	text-decoration:none;
+}
+
 .searchresult .description {
 	height:55%;
 	margin-left:10px;
@@ -239,7 +245,12 @@ body {
 }
 
 .summary_page .scorepanel .scorebuttons {
-	margin-top:-5px;
+	margin-top:-8px;
+	margin-left:8px;
+}
+
+.summary_page .scorepanel .scorebuttons div {
+	width:100%;
 }
 
 .summary_page * {

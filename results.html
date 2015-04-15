@@ -92,8 +92,10 @@
 			$("#resultlisting").append("<div class=\"searchresult\">");
 			$(".searchresult:last").append("<div class=\"leftcol\"></div><div class=\"rightcol\"></div>");
 			$(".leftcol:last").append("<div class=\"name\"></div><div class=\"description\"></div>");
-			$(".name:last").append("<span></span>");
-			$(".name:last > span").text(result.name);
+			$(".name:last").append("<a href=\"./summary.html\"></a>")
+			$(".name:last > a").text(result.name);
+			//$(".name:last").append("<span></span>");
+			//$(".name:last > span").text(result.name);
 			$(".description:last").append("<span></span>");
 			$(".description:last > span").text(result.description);
 			$(".rightcol:last").append("<div class=\"buttonpane\"></div><hr width=\"100%\" size=\"1\" style=\"margin:0px; color:gainsboro;\"></hr><div class=\"rating\"></div>");
@@ -102,9 +104,7 @@
 			} else {
 				$(".buttonpane:last").append("<div class=\"button\">"+heart_button_html+"</div>");
 			}
-			//$(".heartbutton:last").attr("index",i);
 			$(".heartbutton:last").click(function() {
-				//console.log('refresh');
 				searchResults[i].favorite = !searchResults[i].favorite;
 				refreshResults();
 			});
@@ -117,9 +117,7 @@
 			} else {
 				$(".scorebuttons:last").append("<div>"+up_button_html+"</div><div>"+down_button_filled_html+"</div>");
 			}
-			$(".upbutton:last").attr("index",i);
 			$(".upbutton:last").click(function() {
-				console.log("asdfasdf");
 				if (searchResults[i].vote == 1) {
 					searchResults[i].score-=searchResults[i].vote;
 					searchResults[i].vote = 0;
@@ -132,7 +130,6 @@
 				refreshResults();
 			});
 			$(".downbutton:last").click(function() {
-				console.log("asdfasdfsdfsdf");
 				if (searchResults[i].vote == -1) {
 					searchResults[i].score-=searchResults[i].vote;
 					searchResults[i].vote = 0;
