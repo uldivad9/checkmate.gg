@@ -24,10 +24,11 @@ var placeMiniSearchBar = function() {
 	$("#minisearchbar").append("<center><div id=\"logo\"></div><div id=\"inputbox\"></div></center>");
 	$("#logo").append("<a href=\"./main.html\"><img id=\"logo_main\" src=\"assets/logo_main.png\" width=\"180px\" height=\"60px\" alt=\"Checkmate.gg logo\"></a>");
 	$("#inputbox").append("<form id=\"searchform\" onsubmit=\"return false;\"><input id=\"searchfield\" type=\"text\" size=\"80\"/></form>");
-	$("#searchform").submit(function() {
+	$("#searchfield").select2({tags: ['caro-kann', 'opening', 'endgame', 'midgame'],multiple: true,width: '60%',openOnEnter: false});
+	/*$("#searchform").submit(function() {
 		console.log($("#searchfield").val());
 		window.location.href = "./results.html?tags="+$("#searchfield").val();
-	});
+	});*/
 }
 
 var placeTopOfPage = function() {

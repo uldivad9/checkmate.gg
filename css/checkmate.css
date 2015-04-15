@@ -243,6 +243,7 @@ body {
 
 .summary_page .review {
 	display:inline-block;
+	width:100%;
 }
 
 .summary_page .review * {
