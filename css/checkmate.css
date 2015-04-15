@@ -8,6 +8,7 @@ body {
 	font-family: "Roboto", sans-serif;
 	padding:0px;
 	margin:0px;
+	background-color: #FDFDED;
 }
 
 .largefocus {
@@ -97,7 +98,7 @@ body {
 /**
  * A single search item.
  */
-.searchresult {
+.searchresult, .summarycontainer {
 	border-radius:5px;
 	border: 1px solid gray;
 	background: whitesmoke;
@@ -207,7 +208,6 @@ body {
 	float: left; 
 	padding-left:15px;
 	padding-right:15px;
-	border-top:3px solid gray;
 }
 
 .summary_page .resource_header span {
@@ -220,8 +220,6 @@ body {
 }
 
 .summary_page .scorepanel {
-	border-left: 3px solid gray;
-	border-right: 3px solid gray;
 	padding-top:15px;
 	padding-bottom:15px;
 }
@@ -258,6 +256,11 @@ body {
 .resource_tags {
 	text-align: right;
 	font-family: var(--main-sans);
+	float:left;
+}
+
+.summary_page .rightcol {
+	float:right;
 }
 
 .add_review_button {
