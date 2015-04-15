@@ -6,6 +6,8 @@
 
 body {
 	font-family: var(--main-serif);
+	padding:0px;
+	margin:0px;
 }
 
 .largefocus {
@@ -32,9 +34,7 @@ body {
 #minisearchbar {
 	overflow-x: visible;
 	background-color:#F0F0F0;
-	margin-top:-10px;
-	margin-left:-50px;
-	margin-right:-50px;
+	padding:0px;
 	margin-bottom:-10px;
 }
 
