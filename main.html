@@ -5,21 +5,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script type="text/javascript" src="jquery/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="jquery/jquery-ui-1.10.0.custom.min.js"></script>
+<script type="text/javascript" src="select2/select2-3.5.2/select2.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 <link type="text/css" href="css/checkmate.css" rel="stylesheet" />
 <link type="text/css" href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+<link type="text/css" href="select2/select2-3.5.2/select2.css" rel="stylesheet" />
 <script type="text/javascript" src="js/global_start.js"></script>
 <script type="text/javascript">
 	$(window).load(function() {
 		placeControlPanel();
 		
-		$("#searchbar").submit(function() {
-			console.log("enter");
-			window.location.href = "./results.html?tags="+$("#searchfield").val();
-		});
-		
-		$("#btn_search").click(function() {
-			$("#searchbar").submit();
-		});
+		$("#searchfield").select2({tags: ['caro-kann', 'opening', 'endgame', 'midgame'],
+                                  multiple: true,
+                                  width: '60%',
+                                  openOnEnter: false});
 	});
 </script>
 
@@ -29,14 +28,14 @@
 		<div style="height:240px; margin-top:20px">
 			<img alt="Checkmate.gg logo" id="logo_main" src="assets/logo_main.png" style="padding-top:120px">
 		</div>
-		<div id="searchbar" style="height:50px">
-			<form onsubmit="return false;">
-			<input type="text" id="searchfield" size="90" autofocus="true">
-			</form>
-		</div>
-		<div style="height:60px">
-			<button type="button" id="btn_search">Search for resources!</button>
-		</div>
+		<form action="./results.html" method="get">
+            <div id="searchbar" style="height:50px">
+                <input type="text" name="tags" id="searchfield">
+            </div>
+            <div style="height:60px">
+                <button type="submit" id="btn_search">Search for resources!</button>
+            </div>
+		</form>
 	</center>
 	
 <script type="text/javascript" src="js/global_end.js"></script>
