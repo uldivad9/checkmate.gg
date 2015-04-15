@@ -1,4 +1,7 @@
-var heart_button_html = "<img width=\"32px\" height=\"32px\" src=\"./assets/heart_unfilled.png\" onmouseover=\"this.src='./assets/heart_unfilled_shadow.png'\" onmouseout=\"this.src='./assets/heart_unfilled.png'\">";
+var heart_button_html = "<img width=\"32px\" height=\"32px\" src=\"./assets/heart_unfilled.png\" "
++"onmouseover=\"this.src='./assets/heart_unfilled_shadow.png'\" "
++"onmouseout=\"this.src='./assets/heart_unfilled.png'\">";
+
 var gear_button_html = "<img width=\"32px\" height=\"32px\" src=\"./assets/gear.png\" onmouseover=\"this.src='./assets/gear_shadow.png'\" onmouseout=\"this.src='./assets/gear.png'\">";
 var account_button_html = "<img width=\"32px\" height=\"32px\" src=\"./assets/account.png\" onmouseover=\"this.src='./assets/account_shadow.png'\" onmouseout=\"this.src='./assets/account.png'\">";
 

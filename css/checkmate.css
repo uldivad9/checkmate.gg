@@ -5,7 +5,7 @@
 }
 
 body {
-	font-family: var(--main-serif);
+	font-family: "Roboto", sans-serif;
 	padding:0px;
 	margin:0px;
 }
@@ -170,7 +170,7 @@ body {
 }
 
 .searchresult .buttonpane .scorewidget .score span{
-	font-family: var(--main-serif);
+	font-family: "Roboto", sans-serif;
 	font-size:16px;
 }
 
