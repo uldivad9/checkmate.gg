@@ -9,6 +9,13 @@ var heart_button_filled_html = "<img class=\"heartbutton\" width=\"32px\" height
 var gear_button_html = "<img width=\"32px\" height=\"32px\" src=\"./assets/gear.png\" onmouseover=\"this.src='./assets/gear_shadow.png'\" onmouseout=\"this.src='./assets/gear.png'\">";
 var account_button_html = "<img width=\"32px\" height=\"32px\" src=\"./assets/account.png\" onmouseover=\"this.src='./assets/account_shadow.png'\" onmouseout=\"this.src='./assets/account.png'\">";
 
+var extlink_button_html = "<img width=\"32px\" height=\"32px\" src=\"./assets/extlink.png\" onmouseover=\"this.src='./assets/extlink_shadow.png'\" onmouseout=\"this.src='./assets/extlink.png'\">";
+
+var up_button_html = "<img class=\"upbutton\" width=\"15px\" height=\"15px\" src=\"./assets/arrow_up.png\" onmouseover=\"this.src='./assets/arrow_up_shadow.png'\" onmouseout=\"this.src='./assets/arrow_up.png'\">";
+var down_button_html = "<img class=\"downbutton\" width=\"15px\" height=\"15px\" src=\"./assets/arrow_down.png\" onmouseover=\"this.src='./assets/arrow_down_shadow.png'\" onmouseout=\"this.src='./assets/arrow_down.png'\">";
+var up_button_filled_html = "<img class=\"upbutton\" width=\"15px\" height=\"15px\" src=\"./assets/arrow_up_filled.png\" onmouseover=\"this.src='./assets/arrow_up_filled_shadow.png'\" onmouseout=\"this.src='./assets/arrow_up_filled.png'\">";
+var down_button_filled_html = "<img class=\"downbutton\" width=\"15px\" height=\"15px\" src=\"./assets/arrow_down_filled.png\" onmouseover=\"this.src='./assets/arrow_down_filled_shadow.png'\" onmouseout=\"this.src='./assets/arrow_down_filled.png'\">";
+
 var placeControlPanel = function() {
 	$(document.body).prepend("<div id=\"controlpanel\"></div>");
 	$("#controlpanel").append("<center><div id=\"cp_div_username\"></div><div id=\"cp_div_buttons\"</div></center>");

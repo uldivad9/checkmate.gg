@@ -102,14 +102,49 @@
 			} else {
 				$(".buttonpane:last").append("<div class=\"button\">"+heart_button_html+"</div>");
 			}
-			$(".heartbutton:last").attr("index",i);
+			//$(".heartbutton:last").attr("index",i);
 			$(".heartbutton:last").click(function() {
 				//console.log('refresh');
 				searchResults[i].favorite = !searchResults[i].favorite;
 				refreshResults();
 			});
-			$(".buttonpane:last").append("<div class=\"button\"><span class=\"ui-icon ui-icon-extlink\"></span></div><div class=\"scorewidget\"></div>");
-			$(".scorewidget:last").append("<div class=\"scorebuttons\"><span class=\"ui-icon ui-icon-triangle-1-n\"></span><span class=\"ui-icon ui-icon-triangle-1-s\"></span></div>");
+			$(".buttonpane:last").append("<div class=\"button\">"+extlink_button_html+"</div><div class=\"scorewidget\"></div>");
+			$(".scorewidget:last").append("<div class=\"scorebuttons\"></div>");
+			if (result.vote == 0) {
+				$(".scorebuttons:last").append("<div>"+up_button_html+"</div><div>"+down_button_html+"</div>");
+			} else if (result.vote == 1) {
+				$(".scorebuttons:last").append("<div>"+up_button_filled_html+"</div><div>"+down_button_html+"</div>");
+			} else {
+				$(".scorebuttons:last").append("<div>"+up_button_html+"</div><div>"+down_button_filled_html+"</div>");
+			}
+			$(".upbutton:last").attr("index",i);
+			$(".upbutton:last").click(function() {
+				console.log("asdfasdf");
+				if (searchResults[i].vote == 1) {
+					searchResults[i].score-=searchResults[i].vote;
+					searchResults[i].vote = 0;
+					searchResults[i].score+=searchResults[i].vote;
+				} else {
+					searchResults[i].score-=searchResults[i].vote;
+					searchResults[i].vote = 1;
+					searchResults[i].score+=searchResults[i].vote;
+				}
+				refreshResults();
+			});
+			$(".downbutton:last").click(function() {
+				console.log("asdfasdfsdfsdf");
+				if (searchResults[i].vote == -1) {
+					searchResults[i].score-=searchResults[i].vote;
+					searchResults[i].vote = 0;
+					searchResults[i].score+=searchResults[i].vote;
+				} else {
+					searchResults[i].score-=searchResults[i].vote;
+					searchResults[i].vote = -1;
+					searchResults[i].score+=searchResults[i].vote;
+				}
+				refreshResults();
+			});
+			
 			$(".scorewidget:last").append("<div class=\"score\"><span></span></div>");
 			if (result.score > 0) {
 				$(".score:last > span").text("+"+result.score);
@@ -137,6 +172,7 @@
 		$("#logo_main").click(function() {
 			window.location.href = "./main.html";
 		});
+		
 		
 	});
 </script>

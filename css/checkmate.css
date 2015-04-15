@@ -155,23 +155,28 @@ body {
 
 .searchresult .buttonpane .button {
 	float:right;
-	margin-top:20px;
-	margin-right:35px;
+	margin-top:10px;
+	margin-right:20px;
 }
 
 .searchresult .buttonpane .scorewidget {
 	float:right;
-	margin-top:12px;
+	margin-top:8px;
 	margin-right:30px;
 }
 
 .searchresult .buttonpane .scorewidget .scorebuttons {
+	margin-left:5px;
 	float:right;
+}
+
+.searchresult .buttonpane .scorewidget .scorebuttons div {
+	width:100%
 }
 
 .searchresult .buttonpane .scorewidget .score {
 	float:right;
-	margin-top:6px;
+	margin-top:10px;
 }
 
 .searchresult .buttonpane .scorewidget .score span{
