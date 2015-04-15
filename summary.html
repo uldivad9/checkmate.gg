@@ -79,7 +79,23 @@
 		
 		placeTopOfPage();
 		
-		
+		$("#add_review_button").click(function() {
+            if (!($("#new_review_container").length)) {
+                var new_review_box = $('<div>').attr("id", "new_review_container").append($('<textarea>').attr("id","new_review_text").css("width", "50%"));
+                new_review_box.hide();
+                $("#reviews_container").prepend(new_review_box);
+                new_review_box.slideDown();
+                $("#add_review_button").attr("value", "Submit review");
+            }
+            else {
+                $("#new_review_container").after($('<div>').attr("class", "review").append('<div class="review_image" style="float:left;">\n<img src="./assets/pawn_avatar.png" width="80px" height="80px"/ style="margin:10px; padding:10px; border-radius:2px; border: 2px solid gainsboro;">\n</div>')
+                    .append($('<div>').attr("class", "review_text").css("float", "left").append(
+                        $('<p>').html($("#new_review_text").val())).append(
+                        $('<p>').attr("class", "authordata").html("by infinitestory, 4/20/15")
+                    )))
+                $("#new_review_container").slideUp(400, function() {$("#new_review_container").remove()});
+            }
+        })
 		
 		
 	});
@@ -131,7 +147,7 @@
 	
 	<span><strong>Reviews: </strong><input type = "button" id = "add_review_button" value="Add review"></input></span>
 	
-	<div class="summary_page_section" style="border-bottom:none;margin-top:10px;">
+	<div class="summary_page_section" id="reviews_container" style="border-bottom:none;margin-top:10px;">
 		<div class="review">
 			<div class="review_image" style="float:left;">
 				<img src="./assets/pawn_avatar.png" width="80px" height="80px"/ style="margin:10px; padding:10px; border-radius:2px; border: 2px solid gainsboro;">
