@@ -97,7 +97,7 @@ body {
 /**
  * A single search item.
  */
-.searchresult {
+.searchresult, .summarycontainer {
 	border-radius:5px;
 	border: 1px solid gray;
 	background: whitesmoke;
@@ -258,6 +258,7 @@ body {
 .resource_tags {
 	text-align: right;
 	font-family: var(--main-sans);
+	float:right;
 }
 
 .add_review_button {
