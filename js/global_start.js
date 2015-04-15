@@ -19,7 +19,7 @@ var down_button_filled_html = "<img class=\"downbutton\" width=\"15px\" height=\
 var placeControlPanel = function() {
 	$(document.body).prepend("<div id=\"controlpanel\"></div>");
 	$("#controlpanel").append("<center><div id=\"cp_div_username\"></div><div id=\"cp_div_buttons\"</div></center>");
-	$("#cp_div_username").append("<span id=\"username\">usernamegoeshere</span>");
+	$("#cp_div_username").append("<span id=\"username\">infinitestory</span>");
 	$("#cp_div_buttons").append(account_button_html);
 	$("#cp_div_buttons").append(gear_button_html);
 	$("#cp_div_buttons").append(heart_button_html);
@@ -30,8 +30,8 @@ var placeMiniSearchBar = function() {
 	$(document.body).prepend("<div id=\"minisearchbar\"></div>");
 	$("#minisearchbar").append("<center><div id=\"logo\"></div><div id=\"inputbox\"></div></center>");
 	$("#logo").append("<a href=\"./main.html\"><img id=\"logo_main\" src=\"assets/logo_main.png\" width=\"180px\" height=\"60px\" alt=\"Checkmate.gg logo\"></a>");
-	$("#inputbox").append("<form id=\"searchform\" onsubmit=\"return false;\"><input id=\"searchfield\" type=\"text\" size=\"80\"/></form>");
-	$("#searchfield").select2({tags: ['caro-kann', 'opening', 'endgame', 'midgame'],multiple: true,width: '60%',openOnEnter: false});
+	$("#inputbox").append("<form id=\"searchform\" action=\"./results.html\" method=\"get\"><input id=\"searchfield\" type=\"text\" size=\"80\"/></form>");
+	$("#searchfield").select2({tags: ['caro-kann', 'opening', 'endgame', 'midgame'], multiple: true, width: '60%', openOnEnter: false});
 	/*$("#searchform").submit(function() {
 		console.log($("#searchfield").val());
 		window.location.href = "./results.html?tags="+$("#searchfield").val();
