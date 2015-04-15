@@ -28,6 +28,10 @@ body {
 	font-size:16px;
 }
 
+#btn_search {
+    font-family: var(--main-sans);
+}
+
 /**
  * The vertically-compressed search bar at the top.
  */
