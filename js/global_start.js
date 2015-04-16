@@ -23,6 +23,9 @@ var placeControlPanel = function() {
 	$("#cp_div_buttons").append(account_button_html);
 	$("#cp_div_buttons").append(gear_button_html);
 	$("#cp_div_buttons").append(heart_button_html);
+    $('.heartbutton:first').click(function() {
+            window.location = "./favorites.html";
+    });
 }
 
 var placeMiniSearchBar = function() {
