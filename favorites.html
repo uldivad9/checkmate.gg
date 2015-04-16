@@ -85,7 +85,7 @@
 		
 		placeTopOfPage();
 		
-		var placeResult = function(result) {
+		/*var placeResult = function(result) {
 			$("#resultlisting").append("<div class=\"searchresult\">");
 			$(".searchresult:last").append("<div class=\"leftcol\"></div><div class=\"rightcol\"></div>");
 			$(".leftcol:last").append("<div class=\"name\"></div><div class=\"description\"></div>");
@@ -108,14 +108,92 @@
 			} else {
 				$(".rating:last > span").text("Rating: "+result.rating[0]+"-"+result.rating[1]);
 			}
+		}*/
+
+		var placeResult = function(result, i) {
+			$("#resultlisting").append("<div class=\"searchresult\">");
+			$(".searchresult:last").append("<div class=\"leftcol\"></div><div class=\"rightcol\"></div>");
+			$(".leftcol:last").append("<div class=\"name\"></div><div class=\"description\"></div>");
+			$(".name:last").append("<a href=\"./summary.html\"></a>")
+			$(".name:last > a").text(result.name);
+			//$(".name:last").append("<span></span>");
+			//$(".name:last > span").text(result.name);
+			$(".description:last").append("<span></span>");
+			$(".description:last > span").text(result.description);
+			$(".rightcol:last").append("<div class=\"buttonpane\"></div><hr width=\"100%\" size=\"1\" style=\"margin:0px; color:gainsboro;\"></hr><div class=\"rating\"></div>");
+			if (searchResults[i].favorite) {
+				$(".buttonpane:last").append("<div class=\"button\">"+heart_button_filled_html+"</div>");
+			} else {
+				$(".buttonpane:last").append("<div class=\"button\">"+heart_button_html+"</div>");
+			}
+			$(".heartbutton:last").click(function() {
+				searchResults[i].favorite = !searchResults[i].favorite;
+				refreshResults();
+			});
+			$(".buttonpane:last").append("<div class=\"button\">"+extlink_button_html+"</div><div class=\"scorewidget\"></div>");
+			$(".scorewidget:last").append("<div class=\"scorebuttons\"></div>");
+			if (result.vote == 0) {
+				$(".scorebuttons:last").append("<div>"+up_button_html+"</div><div>"+down_button_html+"</div>");
+			} else if (result.vote == 1) {
+				$(".scorebuttons:last").append("<div>"+up_button_filled_html+"</div><div>"+down_button_html+"</div>");
+			} else {
+				$(".scorebuttons:last").append("<div>"+up_button_html+"</div><div>"+down_button_filled_html+"</div>");
+			}
+			$(".upbutton:last").click(function() {
+				if (searchResults[i].vote == 1) {
+					searchResults[i].score-=searchResults[i].vote;
+					searchResults[i].vote = 0;
+					searchResults[i].score+=searchResults[i].vote;
+				} else {
+					searchResults[i].score-=searchResults[i].vote;
+					searchResults[i].vote = 1;
+					searchResults[i].score+=searchResults[i].vote;
+				}
+				refreshResults();
+			});
+			$(".downbutton:last").click(function() {
+				if (searchResults[i].vote == -1) {
+					searchResults[i].score-=searchResults[i].vote;
+					searchResults[i].vote = 0;
+					searchResults[i].score+=searchResults[i].vote;
+				} else {
+					searchResults[i].score-=searchResults[i].vote;
+					searchResults[i].vote = -1;
+					searchResults[i].score+=searchResults[i].vote;
+				}
+				refreshResults();
+			});
+			
+			$(".scorewidget:last").append("<div class=\"score\"><span></span></div>");
+			if (result.score > 0) {
+				$(".score:last > span").text("+"+result.score);
+			} else {
+				$(".score:last > span").text(result.score);
+			}
+			$(".rating:last").append("<span></span>");
+			if (result.rating[0] === result.rating[1]) {
+				$(".rating:last > span").html("<strong>Elo Rating:</strong> ~"+result.rating[0]);
+			} else {
+				$(".rating:last > span").html("<strong>Elo Rating:</strong> "+result.rating[0]+"-"+result.rating[1]);
+			}
+		}
+		
+		var refreshResults = function() {
+			$("#resultlisting *").remove();
+			for (var i=0; i<searchResults.length; i++) {
+				result = searchResults[i];
+				placeResult(result,i);
+			}
 		}
 		
 		
-		for (var i=0; i<searchResults.length; i++) {
+		/*for (var i=0; i<searchResults.length; i++) {
 			result = searchResults[i];
 			
 			placeResult(result);
-		}
+		}*/
+
+		refreshResults();
 		
 		$("#logo_main").click(function() {
 			window.location.href = "./main.html";
