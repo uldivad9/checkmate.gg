@@ -5,8 +5,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script type="text/javascript" src="jquery/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="jquery/jquery-ui-1.10.0.custom.min.js"></script>
+<script type="text/javascript" src="select2/select2-3.5.2/select2.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 <link type="text/css" href="css/checkmate.css" rel="stylesheet" />
 <link type="text/css" href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+<link type="text/css" href="select2/select2-3.5.2/select2.css" rel="stylesheet" />
 <script type="text/javascript" src="js/global_start.js"></script>
 <script type="text/javascript">
 	$(window).load(function() {
@@ -56,23 +59,23 @@
 		searchResults = [
 		{id: 1337420,
 		name: "Favorite",
-		description: "I am a test resource",
+		description: "I am a test favorite",
 		score: 0,
 		rating: [1200,1400],
 		url: "about:blank",
-		favorite: false},
+		favorite: true},
 		
 		{id: 1337421,
-		name: "Favorite Kai",
-		description: "I am also a test resource",
+		name: "Favorite II",
+		description: "I am also a test favorite",
 		score: 10,
 		rating: [1400,1400],
 		url: "google.com",
 		favorite: true},
 		
 		{id: 1337421,
-		name: "Favorite Kai Ni",
-		description: "This resource was upgraded so much that the text of the description is really long; long enough to require word wrapping.",
+		name: "Favorite III",
+		description: "This favorite resource was upgraded so much that the text of the description is really long; long enough to require word wrapping.",
 		score: -10,
 		rating: [1000,2000],
 		url: "google.com",
@@ -127,7 +130,7 @@
 <!--<div style="width:25%; float:left; visibility:hidden;">inazuma is mai waifu</div>-->
 <div style="width:800px; margin-left:auto; margin-right:auto;">
 <br>
-<span class="large" style="text-transform:capitalize; color:#1C1C1C">usernamegoeshere's favorites:</span>
+<span class="large" style="text-transform:capitalize; color:#1C1C1C">infinitestory's favorites:</span>
 </div>
 </div>
 
