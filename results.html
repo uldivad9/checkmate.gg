@@ -50,12 +50,19 @@
 		 * id: 'Resource id'
 		 * name: pls
 		 * description: Short description to be shown under the title
+		 * fullDescription: Long description of the resource
 		 * score: Upvote/downvote score
 		 * vote: User's vote (-1, 0, or 1)
 		 * rating: Approximate rating of target audience. An array of two integers.
 		 * url: External url
 		 * favorite: Boolean, true if this result is favorited by the logged-in user 
-			//not sure if this should be calculated backend or frontend
+		 * reviews: An object containing information about reviews.
+		 *   {
+		 *   rid: 'Review id'
+		 *   text: Review text
+		 *   author: Author's username
+		 *   uuid: Author's 'unique username id'
+		 *   }
 		 */
 		searchResults = [
 		{id: 1337420,
@@ -76,7 +83,7 @@
 		url: "google.com",
 		favorite: true},
 		
-		{id: 1337421,
+		{id: 1337423,
 		name: "Rook-King Endgames",
 		description: "A thorough discussion of historical Rook-King endgames, and how to quickly analyze and play your own configurations.",
 		score: -10,
@@ -86,6 +93,55 @@
 		favorite: true},
 		]
 		//#######################################################################################################
+		
+		var writeToCookie = function() {
+			var out = {}
+			for (var i=0; i<searchResults.length; i++) {
+				out[searchResults[i].id] = {
+					"score": searchResults[i].score,
+					"vote": searchResults[i].vote,
+					"favorite": searchResults[i].favorite,
+					"reviews": searchResults[i].reviews,
+				};
+			}
+			localStorage.storedResultData = JSON.stringify(out);
+			
+		}
+		
+		//cookie time
+		/**
+		 * Cookie will be an object containing dynamic values of resources. Cookie[rid] will return the object:
+		 * {
+		 * score: Upvote/downvote score
+		 * vote: User's vote (-1, 0, or 1)
+		 * favorite: Boolean, true if this result is favorited by the logged-in user
+		 * reviews: An object containing information about reviews.
+		 *   {
+		 *   rid: 'Review id'
+		 *   text: Review text
+		 *   author: Author's username
+		 *   uuid: Author's 'unique username id'
+		 *   }
+		 * }
+		 */
+		try {
+			cookies = JSON.parse(localStorage.storedResultData);
+			console.log(localStorage.storedResultData);
+			for (var i=0; i<searchResults.length; i++) {
+				var stored = cookies[searchResults[i].id];
+				if (stored != undefined) {
+					searchResults[i].score = cookies[searchResults[i].id].score;
+					searchResults[i].vote = cookies[searchResults[i].id].vote;
+					searchResults[i].favorite = cookies[searchResults[i].id].favorite;
+					searchResults[i].reviews = cookies[searchResults[i].id].reviews;
+				}
+			}
+		} catch (e) {
+			writeToCookie();
+			console.log("Cookie error.");
+		}
+		
+		//localStorage.clear();
 		
 		placeTopOfPage();
 		
@@ -108,6 +164,7 @@
 			$(".heartbutton:last").click(function() {
 				searchResults[i].favorite = !searchResults[i].favorite;
 				refreshResults();
+				writeToCookie();
 			});
 			$(".buttonpane:last").append("<div class=\"button\">"+extlink_button_html+"</div><div class=\"scorewidget\"></div>");
 			$(".scorewidget:last").append("<div class=\"scorebuttons\"></div>");
@@ -129,6 +186,7 @@
 					searchResults[i].score+=searchResults[i].vote;
 				}
 				refreshResults();
+				writeToCookie();
 			});
 			$(".downbutton:last").click(function() {
 				if (searchResults[i].vote == -1) {
@@ -141,6 +199,7 @@
 					searchResults[i].score+=searchResults[i].vote;
 				}
 				refreshResults();
+				writeToCookie();
 			});
 			
 			$(".scorewidget:last").append("<div class=\"score\"><span></span></div>");
