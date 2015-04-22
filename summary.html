@@ -155,6 +155,10 @@
 				drawScorePanel();
 			});
 		}
+        
+        $( document ).tooltip({
+            track: true
+        });
 		
 		drawHeartButton();
 		drawScorePanel();
@@ -192,7 +196,7 @@
 	</div>
 	<hr width="100%" size="1" style="margin:0px; color:gainsboro;"></hr>
 	<div class="resource_header ratingpanel" style="text-align:center;">
-		<span><strong>Elo Rating:</strong>  ~1600</span>
+		<span><span title="FIDE chess skill rating" style="vertical-align:center;"><strong>Elo Rating:</strong><span class="ui-icon ui-icon-help" style="display:inline-block; vertical-align:center;"></span></span>  ~1600</span>
 	</div>
 </div>
 </div>
