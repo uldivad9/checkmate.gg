@@ -43,17 +43,18 @@
 		
 		// MAGIC HAPPENS
 		/**
-		 * 'resourceInfo' should be an object containing information to populate the summary page with.
-		 * It should be of the form:
+		 * 'results' should be sorted by display order, with results[0] displayed first.
+		 * Each result item will be of the form:
 		 * {
 		 * id: 'Resource id'
 		 * name: pls
+		 * description: Short description to be shown under the title
 		 * fullDescription: Long description of the resource
 		 * score: Upvote/downvote score
+		 * vote: User's vote (-1, 0, or 1)
 		 * rating: Approximate rating of target audience. An array of two integers.
 		 * url: External url
 		 * favorite: Boolean, true if this result is favorited by the logged-in user 
-			//not sure if this should be calculated backend or frontend
 		 * reviews: An object containing information about reviews.
 		 *   {
 		 *   rid: 'Review id'

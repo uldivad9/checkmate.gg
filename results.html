@@ -49,12 +49,19 @@
 		 * id: 'Resource id'
 		 * name: pls
 		 * description: Short description to be shown under the title
+		 * fullDescription: Long description of the resource
 		 * score: Upvote/downvote score
 		 * vote: User's vote (-1, 0, or 1)
 		 * rating: Approximate rating of target audience. An array of two integers.
 		 * url: External url
 		 * favorite: Boolean, true if this result is favorited by the logged-in user 
-			//not sure if this should be calculated backend or frontend
+		 * reviews: An object containing information about reviews.
+		 *   {
+		 *   rid: 'Review id'
+		 *   text: Review text
+		 *   author: Author's username
+		 *   uuid: Author's 'unique username id'
+		 *   }
 		 */
 		searchResults = [
 		{id: 1337420,
