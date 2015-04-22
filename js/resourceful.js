@@ -26,9 +26,9 @@ var GLOBAL_RESOURCES = [
 	name: "A Primer to Caro-Kann",
 	tags: ["openings","caro-kann","intermediate"],
 	description: "This is an intermediate-level introduction to the Caro-Kann Defense.",
-	fullDescription: "This is an intermediate-level introduction to the Caro-Kann Defense,
-	which begins with 1e4 c6. Players can use this reference to develop a stronger pawn
-	structure following the opening move."
+	fullDescription: "This is an intermediate-level introduction to the Caro-Kann Defense, "+
+	"which begins with 1e4 c6. Players can use this reference to develop a stronger pawn "+
+	"structure following the opening move.",
 	score: 0,
 	vote: 0,
 	rating: [1200,1400],
@@ -49,7 +49,7 @@ var GLOBAL_RESOURCES = [
 	name: "Aggression in the Opening",
 	tags: ["opening","offense","aggro"],
 	description: "A quick analysis of how to play the opening in a way that puts pressure on the opponent.",
-	fullDescription: "Facehunter deck with 30 leper gnomes."
+	fullDescription: "Facehunter deck with 30 leper gnomes.",
 	score: 10,
 	vote: 1,
 	rating: [1400,1400],
@@ -96,12 +96,12 @@ var GLOBAL_RESOURCES = [
 	{id: 1337424,
 	name: "Analogies Between Chess and League of Legends",
 	tags: ["chess","lol","opening","midgame","endgame"],
-	description: "Despite hailing from distant eras and being played on vastly different platforms,
-	chess and League of Legends share a number of similarities.",
-	fullDescription: "Despite hailing from distant eras and being played on vastly different platforms,
-	chess and League of Legends share a number of similarities. These similarities, once understood,
-	can help a player excel at both. This article takes a deeper look at these two popular games,
-	and examines the ways in which their openings, midgames, endgames, and transitions are similar.",
+	description: "Despite hailing from distant eras and being played on vastly different platforms, "+
+	"chess and League of Legends share a number of similarities.",
+	fullDescription: "Despite hailing from distant eras and being played on vastly different platforms, "+
+	"chess and League of Legends share a number of similarities. These similarities, once understood, "+
+	"can help a player excel at both. This article takes a deeper look at these two popular games, "+
+	"and examines the ways in which their openings, midgames, endgames, and transitions are similar.",
 	score: 50,
 	vote: 0,
 	rating: [2000,2000],

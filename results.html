@@ -34,7 +34,7 @@
 			}
 		});
 		
-		console.log($.getUrlVar("tags"));
+		//console.log($.getUrlVar("tags"));
 		
 		var tagList = [$.getUrlVar("tags").split("%2C")];
 		var searchTags = {}
@@ -42,12 +42,42 @@
 			searchTags[tagList[i]] = true;
 		}
 		
-		var relevancies = [];
-		for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
-			relevancy = 0;
-			for (int i=0; i<
+		searchResults = [];
+		
+		{
+		
+			var resourcesWithRelevancy = [];
+			for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
+				var resource = GLOBAL_RESOURCES[i];
+				var relevancy = 0;
+				for (var i=0; i<resource.tags.length; i++) {
+					if (searchTags[resource.tags[i]]) {
+						relevancy+=10000;
+					}
+				}
+				relevancy+=resource.score;
+				
+				if (relevancy > 5000) {
+					resourcesWithRelevancy.push(
+						{
+							"resource": resource,
+							"relevancy": relevancy,
+						}
+					);
+				}
+			}
+			
+			resourcesWithRelevancy.sort(function(a,b) {
+				return a-b;
+			});
+			
+			for (var i=0; i<resourcesWithRelevancy.length; i++) {
+				searchResults.push(resourcesWithRelevancy[i].resource);
+			}
+			
 		}
 		
+		//console.log(JSON.stringify(searchResultsTST));
 		
 		//#######################################################################################################
 		/**
@@ -79,6 +109,7 @@
 		 *   uuid: Author's 'unique username id'
 		 *   }
 		 */
+		 /*
 		searchResults = [
 		{id: 1337420,
 		name: "A Primer to Caro-Kann",
@@ -108,7 +139,7 @@
 		favorite: true},
 		]
 		//#######################################################################################################
-		
+		*/
 		var writeToCookie = function() {
 			var out = {}
 			for (var i=0; i<searchResults.length; i++) {
