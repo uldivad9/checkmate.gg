@@ -67,9 +67,10 @@ GLOBAL_RESOURCES = [
 	rating: [1900,2000],
 	url: "google.com",
 	favorite: true,
+	reviews:
 	[
 	
 	]
-	}
+	},
 
 ]
