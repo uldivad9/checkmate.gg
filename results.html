@@ -11,6 +11,7 @@
 <link type="text/css" href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
 <link type="text/css" href="select2/select2-3.5.2/select2.css" rel="stylesheet" />
 <script type="text/javascript" src="js/global_start.js"></script>
+<script type="text/javascript" src="js/resourceful.js"></script>
 <script type="text/javascript">
 	$(window).load(function() {
 		
@@ -33,7 +34,17 @@
 			}
 		});
 		
-		//console.log($.getUrlVar("tags"));
+		console.log($.getUrlVar("tags"));
+		
+		var searchTags = [$.getUrlVar("tags").split("%2C")];
+		
+		var relevancies = [];
+		for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
+			relevancy = 0;
+			
+			
+		}
+		
 		
 		//#######################################################################################################
 		/**
@@ -126,7 +137,6 @@
 		 */
 		try {
 			cookies = JSON.parse(localStorage.storedResultData);
-			console.log(localStorage.storedResultData);
 			for (var i=0; i<searchResults.length; i++) {
 				var stored = cookies[searchResults[i].id];
 				if (stored != undefined) {
@@ -138,7 +148,7 @@
 			}
 		} catch (e) {
 			writeToCookie();
-			console.log("Cookie error.");
+			console.log("Error with local storage. Local storage state has been reset to default.");
 		}
 		
 		//localStorage.clear();
