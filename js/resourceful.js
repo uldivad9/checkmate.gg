@@ -4,6 +4,7 @@
  * {
  * id: 'Resource id'
  * name: pls
+ * tags: tags
  * description: Short description to be shown under the title
  * fullDescription: Long description of the resource
  * score: Upvote/downvote score
@@ -23,6 +24,7 @@
 GLOBAL_RESOURCES = [
 	{id: 1337420,
 	name: "A Primer to Caro-Kann",
+	tags: ["openings","caro-kann","intermediate"],
 	description: "This is an intermediate-level introduction to the Caro-Kann Defense.",
 	fullDescription: "This is an intermediate-level introduction to the Caro-Kann Defense,
 	which begins with 1e4 c6. Players can use this reference to develop a stronger pawn
@@ -45,6 +47,7 @@ GLOBAL_RESOURCES = [
 
 	{id: 1337421,
 	name: "Aggression in the Opening",
+	tags: ["opening","offense","aggro"],
 	description: "A quick analysis of how to play the opening in a way that puts pressure on the opponent.",
 	fullDescription: "Facehunter deck with 30 leper gnomes."
 	score: 10,
@@ -60,11 +63,28 @@ GLOBAL_RESOURCES = [
 
 	{id: 1337422,
 	name: "Rook-King Endgames",
+	tags: ["endgame","historical"],
 	description: "A thorough discussion of historical Rook-King endgames, and how to quickly analyze and play your own configurations.",
 	fullDescription: "Challenjour Vayne guide for chess",
 	score: -10,
 	vote: -1,
 	rating: [1900,2000],
+	url: "google.com",
+	favorite: true,
+	reviews:
+	[
+
+	]
+	},
+
+	{id: 1337423,
+	name: "muh openings",
+	tags: ["muh","opening","420"],
+	description: "DEMS MUH OPENINGS",
+	fullDescription: "DEMS MUH OPENINGS",
+	score: -86,
+	vote: +1,
+	rating: [0,2400],
 	url: "google.com",
 	favorite: true,
 	reviews:
