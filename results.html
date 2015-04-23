@@ -140,8 +140,13 @@
 		]
 		//#######################################################################################################
 		*/
-		var writeToCookie = function() {
-			var out = {}
+		var writeToCookie = function(clear) {
+			var out;
+			if (clear) {
+				out={}
+			} else {
+				out=JSON.parse(localStorage.storedResultData);
+			}
 			for (var i=0; i<searchResults.length; i++) {
 				out[searchResults[i].id] = {
 					"score": searchResults[i].score,
@@ -182,7 +187,7 @@
 				}
 			}
 		} catch (e) {
-			writeToCookie();
+			writeToCookie(true);
 			console.log("Error with local storage. Local storage state has been reset to default.");
 		}
 		
