@@ -36,14 +36,56 @@
 		
 		//console.log($.getUrlVar("tags"));
 		
-		//#######################################################################################################
-		/**
-		 * Backend sh*t should actually be happening to determine the search results. 
-		 * For now, the results are going to be populated regardless of the tags searched >.>
-		 */
-		//#######################################################################################################
+		searchResults = [];
 		
-		// MAGIC HAPPENS
+		var writeToCookie = function(clear) {
+			var out;
+			if (clear) {
+				out={}
+			} else {
+				out=JSON.parse(localStorage.storedResultData);
+			}
+			for (var i=0; i<searchResults.length; i++) {
+				out[searchResults[i].id] = {
+					"score": searchResults[i].score,
+					"vote": searchResults[i].vote,
+					"favorite": searchResults[i].favorite,
+					"reviews": searchResults[i].reviews,
+				};
+			}
+			localStorage.storedResultData = JSON.stringify(out);
+			
+		}
+		
+		try {
+			cookies = JSON.parse(localStorage.storedResultData);
+			
+			for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
+				var stored = cookies[GLOBAL_RESOURCES[i].id];
+				if (stored != undefined && stored.favorite) {
+					result = GLOBAL_RESOURCES[i];
+					result.score = stored.score;
+					result.vote = stored.vote;
+					result.favorite = stored.favorite;
+					result.reviews = stored.reviews;
+					searchResults.push(result);
+				} else {
+					if (GLOBAL_RESOURCES[i].favorite) {
+						searchResults.push(GLOBAL_RESOURCES[i]);
+					}
+				}
+			}
+		} catch (e) {
+			writeToCookie(true);
+			console.log("Error with local storage. Local storage state has been reset.");
+			
+			for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
+				if (GLOBAL_RESOURCES[i].favorite) {
+					searchResults.push(GLOBAL_RESOURCES[i]);
+				}
+			}
+		}
+		
 		/**
 		 * 'results' should be sorted by display order, with results[0] displayed first.
 		 * Each result item will be of the form:
@@ -56,7 +98,7 @@
 		 * url: External url
 		 * favorite: Boolean, true if this result is favorited by the logged-in user 
 			//not sure if this should be calculated backend or frontend
-		 */
+		 *//*
 		searchResults = [
 		{id: 1337420,
 		name: "Favorite",
@@ -84,7 +126,7 @@
 		rating: [1000,2000],
 		url: "google.com",
 		favorite: true},
-		]
+		]*/
 		//#######################################################################################################
 		
 		placeTopOfPage();
@@ -133,6 +175,7 @@
 			$(".heartbutton:last").click(function() {
 				searchResults[i].favorite = !searchResults[i].favorite;
 				refreshResults();
+				writeToCookie();
 			});
 			$(".buttonpane:last").append("<div class=\"button\">"+extlink_button_html+"</div><div class=\"scorewidget\"></div>");
 			$(".scorewidget:last").append("<div class=\"scorebuttons\"></div>");
@@ -154,6 +197,7 @@
 					searchResults[i].score+=searchResults[i].vote;
 				}
 				refreshResults();
+				writeToCookie();
 			});
 			$(".downbutton:last").click(function() {
 				if (searchResults[i].vote == -1) {
@@ -166,6 +210,7 @@
 					searchResults[i].score+=searchResults[i].vote;
 				}
 				refreshResults();
+				writeToCookie();
 			});
 			
 			$(".scorewidget:last").append("<div class=\"score\"><span></span></div>");
