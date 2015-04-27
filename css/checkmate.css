@@ -219,6 +219,17 @@ hr {
 	margin-right:auto;
 }
 
+.summary_page .summarycontainer {
+	height:auto;
+	padding:30px;
+}
+
+.summary_page .resourcetitle {
+	margin-top:50px;
+	margin-bottom:15px;
+	text-align:center;
+}
+
 .summary_page .resource_header {
 	float: left; 
 	padding-left:5px;

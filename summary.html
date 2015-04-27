@@ -66,22 +66,28 @@
 		 *   }
 		 */
 		
-		resourceInfo = {
-		id: 1337420,
-		name: "Test Resource",
-		fullDescription: "I am a test resource. State Highway 73 begins at State Highway 34 south of Hammon. The western terminus of the highway occurs at a jog in the Roger Mills-Custer county line; north of the intersection, SH-34 runs along the north-south boundary, and at the intersection, the boundary makes a ninety-degree turn to head east-west. The first 0.8 miles (1.3 km) of SH-73 straddles the county line. The county line makes another turn after this to return to a north-south orientation, and SH-73 fully enters Custer County.",
-		score: 3,
+		resourceInfo = {id: 1337420,
+		name: "A Primer to Caro-Kann",
+		tags: ["openings","caro-kann","intermediate"],
+		description: "This is an intermediate-level introduction to the Caro-Kann Defense.",
+		fullDescription: "This is an intermediate-level introduction to the Caro-Kann Defense, "+
+		"which begins with 1e4 c6. Players can use this reference to develop a stronger pawn "+
+		"structure following the opening move.",
+		score: 0,
 		vote: 0,
 		rating: [1200,1400],
-		url: "about:blank",
+		url: "google.com",
 		favorite: false,
-		reviews: [{
-			rid: 12345,
+		reviews:
+		[
+			{
+			rid: 0,
 			text: "A top quality introduction to a less common but powerful opening. Great for intermediates.",
 			author: "infinitestory",
-			uuid: 9001,
-		}],
-		};
+			uuid: 0
+			}
+		]
+		}
 		
 		placeTopOfPage();
 		
@@ -104,6 +110,90 @@
             }
         })
 		
+		
+		var drawPage = function() {
+			$(".summarycontainer *").remove();
+			$(".summarycontainer").append("<div class=\"resourcetitle\"><span class=\"largefocus\"><strong>"+resourceInfo.description+"</strong></span></div>");
+			$(".summarycontainer").append("<div class=\"tagsiconsrow\"/>");
+			var tagsstring = ""
+			for (var i=0; i<resourceInfo.tags.length-1; i++) {
+				tagsstring+=resourceInfo.tags[i];
+				tagsstring+=", ";
+			}
+			if (resourceInfo.tags.length > 0) {
+				tagsstring+=resourceInfo.tags[resourceInfo.tags.length-1];
+			}
+			$(".summarycontainer .tagsiconsrow").append("<div class=\"resource_tags\"><p><strong>Tags:</strong>"+tagsstring+"</p></div>");
+			$(".summarycontainer .tagsiconsrow").append("<div class=\:rightcol\"><div class=\"resource_header scorepanel\"></div></div>");
+			$(".summarycontainer .tagsiconsrow").append("<div class=\"resource_header extlinkpanel\"></div>");
+			$(".summarycontainer .extlinkpanel").append("<a href=\""+resourceInfo.url+"\">"+extlink_button_html+"</a>");
+			$(".summarycontainer .tagsiconsrow").append("<div class=\"resource_header heartpanel\"><div id=\"cp_button3\" class=\"heart_button\"></div></div>");
+			
+		}
+		
+		/*
+<div class="summary_page">
+<div class="summarycontainer" style="height:auto;padding:30px;">
+    <div style = "margin-top:50px; margin-bottom:15px;text-align:center;">
+		<span class="largefocus"><strong>A Primer to Caro-Kann</strong></span>
+    </div>
+    <div class="tagsiconsrow">
+	<div class="resource_tags">
+		<p><strong>Tags:</strong> opening, Caro-Kann, defense, online, free</p>
+	</div>
+	<div class="rightcol">
+	<div class="resource_header scorepanel">
+		<div>
+			<span> +35</span>
+		</div>
+		<div class="scorebuttons">
+			<span class="ui-icon ui-icon-triangle-1-n"></span>
+			<span class="ui-icon ui-icon-triangle-1-s"></span>
+		</div>
+	</div>
+	<div class="resource_header extlinkpanel">
+		<a href="https://www.google.com/"><img width="32px" height="32px" src="./assets/extlink.png" onmouseover="this.src='./assets/extlink_shadow.png'" onmouseout="this.src='./assets/extlink.png'"></a>
+	</div>
+    <div class="resource_header heartpanel">
+		<div id="cp_button3" class="heart_button"></div>
+	</div> <-- GOT HERE ##########################################################
+	<hr width="100%" size="1" style="margin:0px; color:gainsboro;"></hr>
+	<div class="resource_header ratingpanel" style="text-align:center;">
+		<span><span title="FIDE chess skill rating" style="vertical-align:center;"><strong>Elo Rating:</strong><span class="ui-icon ui-icon-help" style="display:inline-block; vertical-align:center;"></span></span>  ~1600</span>
+	</div>
+</div>
+</div>
+	<hr width="100%" size="2" style="margin-top:20px; margin-bottom:20px; color:gainsboro;"></hr>
+	<div class="description">
+		<span>This is an intermediate-level introduction to the Caro-Kann Defense, which begins with 1e4 c6.  Players can use this reference to develop a stronger pawn structure following the opening move.</span>
+	</div>
+	<hr width="100%" size="2" style="margin-top:20px; margin-bottom:20px; color:gainsboro;"></hr>
+	
+	<span><strong>Reviews: </strong><input type = "button" id = "add_review_button" value="Add review"></input></span>
+	
+	<div class="summary_page_section" id="reviews_container" style="border-bottom:none;margin-top:10px;">
+		<div class="review">
+			<div class="review_image">
+				<img src="./assets/pawn_avatar.png" width="80px" height="80px"/ style="margin:10px; padding:10px; border-radius:2px; border: 2px solid gainsboro;">
+			</div>
+			<div class="review_text">
+				<p>A top quality introduction to a less common but powerful opening.  Great for intermediates.</p>
+				<p class="authordata">by infinitestory, 4/20/15</p>
+			</div>
+		</div>
+		<div class="review">
+			<div class="review_image">
+				<img src="./assets/pawn_avatar.png" width="80px" height="80px"/ style="margin:10px; padding:10px; border-radius:2px; border: 2px solid gainsboro;">
+			</div>
+			<div class="review_text">
+				<p>A top quality introduction to a less common but powerful opening.  Great for intermediates.</p>
+				<p class="authordata">by infinitestory, 4/20/15</p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+		*/
 		
 		var drawHeartButton = function() {
 			if (resourceInfo.favorite) {
