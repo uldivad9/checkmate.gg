@@ -82,6 +82,9 @@
 			var out;
 			if (clear) {
 				out={}
+				for (var i=0; i<GLOBAL_RESULTS.length; i++) {
+					out[GLOBAL_RESULTS[i].id] = GLOBAL_RESULTS[i];
+				}
 			} else {
 				out=JSON.parse(localStorage.storedResultData);
 			}
@@ -118,10 +121,10 @@
 			for (var i=0; i<searchResults.length; i++) {
 				var stored = cookies[searchResults[i].id];
 				if (stored != undefined) {
-					searchResults[i].score = cookies[searchResults[i].id].score;
-					searchResults[i].vote = cookies[searchResults[i].id].vote;
-					searchResults[i].favorite = cookies[searchResults[i].id].favorite;
-					searchResults[i].reviews = cookies[searchResults[i].id].reviews;
+					searchResults[i].score = stored.score;
+					searchResults[i].vote = stored.vote;
+					searchResults[i].favorite = stored.favorite;
+					searchResults[i].reviews = stored.reviews;
 				}
 			}
 		} catch (e) {

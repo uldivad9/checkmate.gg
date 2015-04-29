@@ -46,12 +46,17 @@
 		var writeToCookie = function(clear) {
 			if (resourceInfo === undefined) {
 				out = {}
-				localStorage.storedResultData = JSON.stringify(out);
+				for (var i=0; i<GLOBAL_RESULTS.length; i++) {
+					out[GLOBAL_RESULTS[i].id] = GLOBAL_RESULTS[i];
+				}
 				return;
 			}
 			var out;
 			if (clear) {
 				out={}
+				for (var i=0; i<GLOBAL_RESULTS.length; i++) {
+					out[GLOBAL_RESULTS[i].id] = GLOBAL_RESULTS[i];
+				}
 			} else {
 				out=JSON.parse(localStorage.storedResultData);
 			}
@@ -62,12 +67,18 @@
 				"reviews": resourceInfo.reviews,
 			};
 			localStorage.storedResultData = JSON.stringify(out);
-			
 		}
 		
 		try {
 			cookies = JSON.parse(localStorage.storedResultData);
-			//TODO #################################################################
+			console.log(cookies);
+			stored = cookies[resourceInfo.id];
+			if (stored != undefined) {
+				resourceInfo.score = stored.score;
+				resourceInfo.vote = stored.vote;
+				resourceInfo.favorite = stored.favorite;
+				resourceInfo.reviews = stored.reviews;
+			}
 		} catch (e) {
 			writeToCookie(true);
 			console.log("Error with local storage. Local storage state has been reset.");
@@ -147,6 +158,7 @@
 				resourceInfo.favorite = !resourceInfo.favorite;
 				$(".heart_button *").remove();
 				drawHeartButton();
+				writeToCookie();
 			});
 		}
 		
@@ -172,6 +184,7 @@
 					resourceInfo.score+=resourceInfo.vote;
 				}
 				drawScorePanel();
+				writeToCookie();
 			});
 			$(".downbutton:last").click(function() {
 				if (resourceInfo.vote == -1) {
@@ -184,6 +197,7 @@
 					resourceInfo.score+=resourceInfo.vote;
 				}
 				drawScorePanel();
+				writeToCookie();
 			});
 		}
         
