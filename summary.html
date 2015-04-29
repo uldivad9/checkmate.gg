@@ -111,11 +111,11 @@
 			$(".summarycontainer").append("<div class=\"tagsiconsrow\"/>");
 			var tagsstring = ""
 			for (var i=0; i<resourceInfo.tags.length-1; i++) {
-				tagsstring+=resourceInfo.tags[i];
+				tagsstring+="<a href=\"./results.html?tags="+resourceInfo.tags[i]+"\">"+resourceInfo.tags[i]+"</a>";
 				tagsstring+=", ";
 			}
 			if (resourceInfo.tags.length > 0) {
-				tagsstring+=resourceInfo.tags[resourceInfo.tags.length-1];
+				tagsstring+="<a href=\"./results.html?tags="+resourceInfo.tags[i]+"\">"+resourceInfo.tags[i]+"</a>";
 			}
 			$(".summarycontainer .tagsiconsrow").append("<div class=\"resource_tags\"><p><strong>Tags: </strong>"+tagsstring+"</p></div>");
 			$(".summarycontainer .tagsiconsrow").append("<div class=\"rightcol\"><div class=\"resource_header scorepanel\"></div></div>");
