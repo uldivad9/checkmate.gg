@@ -50,8 +50,8 @@
 			for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
 				var resource = GLOBAL_RESOURCES[i];
 				var relevancy = 0;
-				for (var i=0; i<resource.tags.length; i++) {
-					if (searchTags[resource.tags[i]]) {
+				for (var j=0; j<resource.tags.length; j++) {
+					if (searchTags[resource.tags[j]]) {
 						relevancy+=10000;
 					}
 				}
@@ -82,16 +82,14 @@
 			var out;
 			if (clear) {
 				out={}
+				for (var i=0; i<GLOBAL_RESULTS.length; i++) {
+					out[GLOBAL_RESULTS[i].id] = GLOBAL_RESULTS[i];
+				}
 			} else {
 				out=JSON.parse(localStorage.storedResultData);
 			}
 			for (var i=0; i<searchResults.length; i++) {
-				out[searchResults[i].id] = {
-					"score": searchResults[i].score,
-					"vote": searchResults[i].vote,
-					"favorite": searchResults[i].favorite,
-					"reviews": searchResults[i].reviews,
-				};
+				out[searchResults[i].id] = searchResults[i];
 			}
 			localStorage.storedResultData = JSON.stringify(out);
 			
@@ -118,10 +116,7 @@
 			for (var i=0; i<searchResults.length; i++) {
 				var stored = cookies[searchResults[i].id];
 				if (stored != undefined) {
-					searchResults[i].score = cookies[searchResults[i].id].score;
-					searchResults[i].vote = cookies[searchResults[i].id].vote;
-					searchResults[i].favorite = cookies[searchResults[i].id].favorite;
-					searchResults[i].reviews = cookies[searchResults[i].id].reviews;
+					searchResults[i] = stored;
 				}
 			}
 		} catch (e) {

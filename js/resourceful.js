@@ -113,6 +113,102 @@ var GLOBAL_RESOURCES = [
 	[
 	
 	]
-	}
+	},
+
+	{id: 1347423,
+	name: "Fundamental Chess Strategies for Beginners",
+	tags: ["beginner","improvement","strategies"],
+	description: "A comprehensive list of useful strategies for those getting started",
+	fullDescription: "A comprehensive list of useful strategies for those getting started",
+	score: +60,
+	vote: +1,
+	rating: [300,800],
+	url: "google.com",
+	favorite: false,
+	reviews:
+	[
+	
+	]
+	},
+
+	{id: 1347424,
+	name: "List of Chess Resources from Grandmasters",
+	tags: ["expert","recommendations"],
+	description: "A list of useful resources recommended by the top players in the world",
+	fullDescription: "A list of useful resources recommended by the top players in the world",
+	score: +6,
+	vote: -1,
+	rating: [2300,2900],
+	url: "google.com",
+	favorite: false,
+	reviews:
+	[
+	
+	]
+	},
+
+	{id: 1347425,
+	name: "The Power of Positional Chess, Pt 1 - Manuvering",
+	tags: ["positional","manuvering"],
+	description: "Tips on playing positional chess",
+	fullDescription: "Tips on playing positional chess with a focus on manuvering.  Includes various illustrated example games",
+	score: +100,
+	vote: +1,
+	rating: [1800,2100],
+	url: "google.com",
+	favorite: true,
+	reviews:
+	[
+	
+	]
+	},
+
+	{id: 1347426,
+	name: "The Art of Heroic Defense",
+	tags: ["defense","heroic"],
+	description: "Contains a list of defense strategies",
+	fullDescription: "Covers various defense strategies as well as various types of analyses",
+	score: +30,
+	vote: +1,
+	rating: [1800,2100],
+	url: "google.com",
+	favorite: true,
+	reviews:
+	[
+	
+	]
+	},
+
+	{id: 1347427,
+	name: "Lines and Focal Points: The Heart and Soul of a Combination",
+	tags: ["lines","focal", "combination"],
+	description: "A description and illustration of the Alekhine-Chatard attack",
+	fullDescription: "A description and illustration of the Alekhine-Chatard attack",
+	score: +20,
+	vote: -1,
+	rating: [1900,2200],
+	url: "google.com",
+	favorite: false,
+	reviews:
+	[
+	
+	]
+	},
+
+	{id: 1347428,
+	name: "Scotch Opening: Blumenfeld Variation",
+	tags: ["scotch","opening", "blumenfeld"],
+	description: "A game illustrating the power of mastering openings",
+	fullDescription: "A narration of a games, where skillful openings claimed victories",
+	score: +10,
+	vote: -1,
+	rating: [1500,2300],
+	url: "google.com",
+	favorite: false,
+	reviews:
+	[
+	
+	]
+	},
 
 ]
