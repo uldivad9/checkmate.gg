@@ -49,12 +49,7 @@
 				}
 			}
 			for (var i=0; i<searchResults.length; i++) {
-				out[searchResults[i].id] = {
-					"score": searchResults[i].score,
-					"vote": searchResults[i].vote,
-					"favorite": searchResults[i].favorite,
-					"reviews": searchResults[i].reviews,
-				};
+				out[searchResults[i].id] = searchResults[i];
 			}
 			localStorage.storedResultData = JSON.stringify(out);
 			
@@ -67,16 +62,7 @@
 				var stored = cookies[GLOBAL_RESOURCES[i].id];
 				console.log(stored);
 				if (stored != undefined && stored.favorite) {
-					result = GLOBAL_RESOURCES[i];
-					result.score = stored.score;
-					result.vote = stored.vote;
-					result.favorite = stored.favorite;
-					result.reviews = stored.reviews;
-					searchResults.push(result);
-				} else {
-					if (GLOBAL_RESOURCES[i].favorite) {
-						searchResults.push(GLOBAL_RESOURCES[i]);
-					}
+					searchResults.push(stored);
 				}
 			}
 		} catch (e) {
@@ -171,13 +157,6 @@
 				placeResult(result,i);
 			}
 		}
-		
-		
-		/*for (var i=0; i<searchResults.length; i++) {
-			result = searchResults[i];
-			
-			placeResult(result);
-		}*/
 
 		refreshResults();
 		

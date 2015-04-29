@@ -60,12 +60,7 @@
 			} else {
 				out=JSON.parse(localStorage.storedResultData);
 			}
-			out[resourceInfo.id] = {
-				"score": resourceInfo.score,
-				"vote": resourceInfo.vote,
-				"favorite": resourceInfo.favorite,
-				"reviews": resourceInfo.reviews,
-			};
+			out[resourceInfo.id] = resourceInfo;
 			localStorage.storedResultData = JSON.stringify(out);
 		}
 		
@@ -74,10 +69,7 @@
 			console.log(cookies);
 			stored = cookies[resourceInfo.id];
 			if (stored != undefined) {
-				resourceInfo.score = stored.score;
-				resourceInfo.vote = stored.vote;
-				resourceInfo.favorite = stored.favorite;
-				resourceInfo.reviews = stored.reviews;
+				resourceInfo = stored;
 			}
 		} catch (e) {
 			writeToCookie(true);
