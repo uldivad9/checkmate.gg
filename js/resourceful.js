@@ -17,6 +17,7 @@
  *   rid: 'Review id'
  *   text: Review text
  *   author: Author's username
+ *   date: Date of post (string)
  *   uuid: Author's 'unique username id'
  *   }
  */
@@ -40,6 +41,7 @@ var GLOBAL_RESOURCES = [
 		rid: 0,
 		text: "A top quality introduction to a less common but powerful opening. Great for intermediates.",
 		author: "infinitestory",
+		date: "1/1/11",
 		uuid: 0
 		}
 	]

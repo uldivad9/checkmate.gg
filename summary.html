@@ -34,6 +34,15 @@
 			}
 		});
 		
+		console.log($.getUrlVar("rid"));
+		var rid = $.getUrlVar("rid");
+		var resourceInfo = undefined;
+		for (int i=0; i<GLOBAL_RESOURCES.length; i++) {
+			if (GLOBAL_RESOURCES[i].id === rid) {
+				//TODO ################################################
+			}
+		}
+		
 		//#######################################################################################################
 		/**
 		 * 'id' should be resource's unique id. 
@@ -65,6 +74,33 @@
 		 *   uuid: Author's 'unique username id'
 		 *   }
 		 */
+		
+		var writeToCookie = function(clear) {
+			var out;
+			if (clear) {
+				out={}
+			} else {
+				out=JSON.parse(localStorage.storedResultData);
+			}
+			for (var i=0; i<searchResults.length; i++) {
+				out[searchResults[i].id] = {
+					"score": searchResults[i].score,
+					"vote": searchResults[i].vote,
+					"favorite": searchResults[i].favorite,
+					"reviews": searchResults[i].reviews,
+				};
+			}
+			localStorage.storedResultData = JSON.stringify(out);
+			
+		}
+		
+		try {
+			cookies = JSON.parse(localStorage.storedResultData);
+			//TODO #################################################################
+		} catch (e) {
+			writeToCookie(true);
+			console.log("Error with local storage. Local storage state has been reset.");
+		}	
 		
 		resourceInfo = {id: 1337420,
 		name: "A Primer to Caro-Kann",
@@ -113,7 +149,8 @@
 		
 		var drawPage = function() {
 			$(".summarycontainer *").remove();
-			$(".summarycontainer").append("<div class=\"resourcetitle\"><span class=\"largefocus\"><strong>"+resourceInfo.description+"</strong></span></div>");
+			
+			$(".summarycontainer").append("<div class=\"resourcetitle\"><span class=\"largefocus\"><strong>"+resourceInfo.name+"</strong></span></div>");
 			$(".summarycontainer").append("<div class=\"tagsiconsrow\"/>");
 			var tagsstring = ""
 			for (var i=0; i<resourceInfo.tags.length-1; i++) {
@@ -123,77 +160,29 @@
 			if (resourceInfo.tags.length > 0) {
 				tagsstring+=resourceInfo.tags[resourceInfo.tags.length-1];
 			}
-			$(".summarycontainer .tagsiconsrow").append("<div class=\"resource_tags\"><p><strong>Tags:</strong>"+tagsstring+"</p></div>");
-			$(".summarycontainer .tagsiconsrow").append("<div class=\:rightcol\"><div class=\"resource_header scorepanel\"></div></div>");
-			$(".summarycontainer .tagsiconsrow").append("<div class=\"resource_header extlinkpanel\"></div>");
+			$(".summarycontainer .tagsiconsrow").append("<div class=\"resource_tags\"><p><strong>Tags: </strong>"+tagsstring+"</p></div>");
+			$(".summarycontainer .tagsiconsrow").append("<div class=\"rightcol\"><div class=\"resource_header scorepanel\"></div></div>");
+			$(".summarycontainer .rightcol").append("<div class=\"resource_header extlinkpanel\"></div>");
 			$(".summarycontainer .extlinkpanel").append("<a href=\""+resourceInfo.url+"\">"+extlink_button_html+"</a>");
-			$(".summarycontainer .tagsiconsrow").append("<div class=\"resource_header heartpanel\"><div id=\"cp_button3\" class=\"heart_button\"></div></div>");
+			$(".summarycontainer .rightcol").append("<div class=\"resource_header heartpanel\"><div id=\"cp_button3\" class=\"heart_button\"></div></div>");
+			$(".summarycontainer .rightcol").append("<hr width=\"100%\" size=\"1\" style=\"margin:0px; color:gainsboro;\"></hr>");
+			$(".summarycontainer .rightcol").append("<div class=\"resource_header ratingpanel\" style=\"text-align:center;\"></div>");
+			$(".summarycontainer .ratingpanel").append("<span><span title=\"FIDE chess skill rating\"><strong>Elo Rating:</strong><span class=\"ui-icon ui-icon help\"></span></span>~1600</span>");
 			
+			$(".summarycontainer").append("<hr width=\"100%\: size=\"2\" style=\"margin-top:20px; margin-bottom:20px; color:gainsboro;\"></hr>");
+			$(".summarycontainer").append("<div class=\"description\"><span>"+resourceInfo.fullDescription+"</span></div>");
+			$(".summarycontainer").append("<hr width=\"100%\: size=\"2\" style=\"margin-top:20px; margin-bottom:20px; color:gainsboro;\"></hr>");
+			$(".summarycontainer").append("<div class=\"summary_page_section\">");
+			$(".summarycontainer").append("<span><strong>Reviews: </strong><input type = \"button\" id = \"add_review_button\" value=\"Add review\"></input></span>");
+			for (var i=0; i<resourceInfo.reviews.length; i++) {
+				console.log(resourceInfo);
+				review = resourceInfo.reviews[i];
+				$(".summarycontainer .summary_page_section").append("<div class=\"review\"><div class=\"review_image\"><img src=\"./assets/pawn_avatar.png\" width=\"80px\" height=\"80px\"/></div></div>");
+				$(".summarycontainer .review:last").append("<div class=\"review_text\"><p>"+review.text+"</p><p class=\"authordata\">by "+review.author +", "+review.date+"</p></div></div>");
+			}
 		}
 		
-		/*
-<div class="summary_page">
-<div class="summarycontainer" style="height:auto;padding:30px;">
-    <div style = "margin-top:50px; margin-bottom:15px;text-align:center;">
-		<span class="largefocus"><strong>A Primer to Caro-Kann</strong></span>
-    </div>
-    <div class="tagsiconsrow">
-	<div class="resource_tags">
-		<p><strong>Tags:</strong> opening, Caro-Kann, defense, online, free</p>
-	</div>
-	<div class="rightcol">
-	<div class="resource_header scorepanel">
-		<div>
-			<span> +35</span>
-		</div>
-		<div class="scorebuttons">
-			<span class="ui-icon ui-icon-triangle-1-n"></span>
-			<span class="ui-icon ui-icon-triangle-1-s"></span>
-		</div>
-	</div>
-	<div class="resource_header extlinkpanel">
-		<a href="https://www.google.com/"><img width="32px" height="32px" src="./assets/extlink.png" onmouseover="this.src='./assets/extlink_shadow.png'" onmouseout="this.src='./assets/extlink.png'"></a>
-	</div>
-    <div class="resource_header heartpanel">
-		<div id="cp_button3" class="heart_button"></div>
-	</div> <-- GOT HERE ##########################################################
-	<hr width="100%" size="1" style="margin:0px; color:gainsboro;"></hr>
-	<div class="resource_header ratingpanel" style="text-align:center;">
-		<span><span title="FIDE chess skill rating" style="vertical-align:center;"><strong>Elo Rating:</strong><span class="ui-icon ui-icon-help" style="display:inline-block; vertical-align:center;"></span></span>  ~1600</span>
-	</div>
-</div>
-</div>
-	<hr width="100%" size="2" style="margin-top:20px; margin-bottom:20px; color:gainsboro;"></hr>
-	<div class="description">
-		<span>This is an intermediate-level introduction to the Caro-Kann Defense, which begins with 1e4 c6.  Players can use this reference to develop a stronger pawn structure following the opening move.</span>
-	</div>
-	<hr width="100%" size="2" style="margin-top:20px; margin-bottom:20px; color:gainsboro;"></hr>
-	
-	<span><strong>Reviews: </strong><input type = "button" id = "add_review_button" value="Add review"></input></span>
-	
-	<div class="summary_page_section" id="reviews_container" style="border-bottom:none;margin-top:10px;">
-		<div class="review">
-			<div class="review_image">
-				<img src="./assets/pawn_avatar.png" width="80px" height="80px"/ style="margin:10px; padding:10px; border-radius:2px; border: 2px solid gainsboro;">
-			</div>
-			<div class="review_text">
-				<p>A top quality introduction to a less common but powerful opening.  Great for intermediates.</p>
-				<p class="authordata">by infinitestory, 4/20/15</p>
-			</div>
-		</div>
-		<div class="review">
-			<div class="review_image">
-				<img src="./assets/pawn_avatar.png" width="80px" height="80px"/ style="margin:10px; padding:10px; border-radius:2px; border: 2px solid gainsboro;">
-			</div>
-			<div class="review_text">
-				<p>A top quality introduction to a less common but powerful opening.  Great for intermediates.</p>
-				<p class="authordata">by infinitestory, 4/20/15</p>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-		*/
+		drawPage();
 		
 		var drawHeartButton = function() {
 			if (resourceInfo.favorite) {
@@ -261,64 +250,65 @@
 
 <div class="summary_page">
 	<div class="summarycontainer" style="height:auto;padding:30px;">
-    <div style = "margin-top:50px; margin-bottom:15px;text-align:center;">
-		<span class="largefocus"><strong>A Primer to Caro-Kann</strong></span>
-    </div>
-    <div class="tagsiconsrow">
-	<div class="resource_tags">
-		<p><strong>Tags:</strong> opening, Caro-Kann, defense, online, free</p>
-	</div>
-	<div class="rightcol">
-	<div class="resource_header scorepanel">
-		<div>
-			<span> +35</span>
+		<!--
+		<div style = "margin-top:50px; margin-bottom:15px;text-align:center;">
+			<span class="largefocus"><strong>A Primer to Caro-Kann</strong></span>
 		</div>
-		<div class="scorebuttons">
-			<span class="ui-icon ui-icon-triangle-1-n"></span>
-			<span class="ui-icon ui-icon-triangle-1-s"></span>
-		</div>
-	</div>
-	<div class="resource_header extlinkpanel">
-		<a href="https://www.google.com/"><img width="32px" height="32px" src="./assets/extlink.png" onmouseover="this.src='./assets/extlink_shadow.png'" onmouseout="this.src='./assets/extlink.png'"></a>
-	</div>
-    <div class="resource_header heartpanel">
-		<div id="cp_button3" class="heart_button"></div>
-	</div>
-	<hr width="100%" size="1" style="margin:0px; color:gainsboro;"></hr>
-	<div class="resource_header ratingpanel" style="text-align:center;">
-		<span><span title="FIDE chess skill rating" style="vertical-align:center;"><strong>Elo Rating:</strong><span class="ui-icon ui-icon-help" style="display:inline-block; vertical-align:center;"></span></span>  ~1600</span>
-	</div>
-</div>
-</div>
-	<hr width="100%" size="2" style="margin-top:20px; margin-bottom:20px; color:gainsboro;"></hr>
-	<div class="description">
-		<span>This is an intermediate-level introduction to the Caro-Kann Defense, which begins with 1e4 c6.  Players can use this reference to develop a stronger pawn structure following the opening move.</span>
-	</div>
-	<hr width="100%" size="2" style="margin-top:20px; margin-bottom:20px; color:gainsboro;"></hr>
-	
-	<span><strong>Reviews: </strong><input type = "button" id = "add_review_button" value="Add review"></input></span>
-	
-	<div class="summary_page_section" id="reviews_container" style="border-bottom:none;margin-top:10px;">
-		<div class="review">
-			<div class="review_image">
-				<img src="./assets/pawn_avatar.png" width="80px" height="80px"/ style="margin:10px; padding:10px; border-radius:2px; border: 2px solid gainsboro;">
+		<div class="tagsiconsrow">
+			<div class="resource_tags">
+				<p><strong>Tags:</strong> opening, Caro-Kann, defense, online, free</p>
 			</div>
-			<div class="review_text">
-				<p>A top quality introduction to a less common but powerful opening.  Great for intermediates.</p>
-				<p class="authordata">by infinitestory, 4/20/15</p>
+			<div class="rightcol">
+				<div class="resource_header scorepanel">
+					<div>
+						<span> +35</span>
+					</div>
+					<div class="scorebuttons">
+						<span class="ui-icon ui-icon-triangle-1-n"></span>
+						<span class="ui-icon ui-icon-triangle-1-s"></span>
+					</div>
+				</div>
+				<div class="resource_header extlinkpanel">
+					<a href="https://www.google.com/"><img width="32px" height="32px" src="./assets/extlink.png" onmouseover="this.src='./assets/extlink_shadow.png'" onmouseout="this.src='./assets/extlink.png'"></a>
+				</div>
+				<div class="resource_header heartpanel">
+					<div id="cp_button3" class="heart_button"></div>
+				</div>
+				<hr width="100%" size="1" style="margin:0px; color:gainsboro;"></hr>
+				<div class="resource_header ratingpanel" style="text-align:center;">
+					<span><span title="FIDE chess skill rating" style="vertical-align:center;"><strong>Elo Rating:</strong><span class="ui-icon ui-icon-help" style="display:inline-block; vertical-align:center;"></span></span>  ~1600</span>
+				</div>
 			</div>
 		</div>
-		<div class="review">
-			<div class="review_image">
-				<img src="./assets/pawn_avatar.png" width="80px" height="80px"/ style="margin:10px; padding:10px; border-radius:2px; border: 2px solid gainsboro;">
-			</div>
-			<div class="review_text">
-				<p>A top quality introduction to a less common but powerful opening.  Great for intermediates.</p>
-				<p class="authordata">by infinitestory, 4/20/15</p>
-			</div>
+		<hr width="100%" size="2" style="margin-top:20px; margin-bottom:20px; color:gainsboro;"></hr>
+		<div class="description">
+			<span>This is an intermediate-level introduction to the Caro-Kann Defense, which begins with 1e4 c6.  Players can use this reference to develop a stronger pawn structure following the opening move.</span>
 		</div>
+		<hr width="100%" size="2" style="margin-top:20px; margin-bottom:20px; color:gainsboro;"></hr>
+		
+		<span><strong>Reviews: </strong><input type = "button" id = "add_review_button" value="Add review"></input></span>
+		
+		<div class="summary_page_section" id="reviews_container" style="border-bottom:none;margin-top:10px;">
+			<div class="review">
+				<div class="review_image">
+					<img src="./assets/pawn_avatar.png" width="80px" height="80px"/>
+				</div>
+				<div class="review_text">
+					<p>A top quality introduction to a less common but powerful opening.  Great for intermediates.</p>
+					<p class="authordata">by infinitestory, 4/20/15</p>
+				</div>
+			</div>
+			<div class="review">
+				<div class="review_image">
+					<img src="./assets/pawn_avatar.png" width="80px" height="80px"/ ">
+				</div>
+				<div class="review_text">
+					<p>A top quality introduction to a less common but powerful opening.  Great for intermediates.</p>
+					<p class="authordata">by infinitestory, 4/20/15</p>
+				</div>
+			</div>
+		</div>-->
 	</div>
-</div>
 </div>
 
 <script type="text/javascript" src="js/global_end.js"></script>

@@ -77,69 +77,7 @@
 			
 		}
 		
-		//console.log(JSON.stringify(searchResultsTST));
 		
-		//#######################################################################################################
-		/**
-		 * Backend sh*t should actually be happening to determine the search results. 
-		 * For now, the results are going to be populated regardless of the tags searched >.>
-		 */
-		//#######################################################################################################
-		
-		// MAGIC HAPPENS
-		/**
-		 * 'results' should be sorted by display order, with results[0] displayed first.
-		 * Each result item will be of the form:
-		 * {
-		 * id: 'Resource id'
-		 * name: pls
-		 * tags: A list of lower-case strings which are the tags.
-		 * description: Short description to be shown under the title
-		 * fullDescription: Long description of the resource
-		 * score: Upvote/downvote score
-		 * vote: User's vote (-1, 0, or 1)
-		 * rating: Approximate rating of target audience. An array of two integers.
-		 * url: External url
-		 * favorite: Boolean, true if this result is favorited by the logged-in user 
-		 * reviews: An object containing information about reviews.
-		 *   {
-		 *   rid: 'Review id'
-		 *   text: Review text
-		 *   author: Author's username
-		 *   uuid: Author's 'unique username id'
-		 *   }
-		 */
-		 /*
-		searchResults = [
-		{id: 1337420,
-		name: "A Primer to Caro-Kann",
-		description: "This is an intermediate-level introduction to the Caro-Kann Defense.",
-		score: 0,
-		vote: 0,
-		rating: [1200,1400],
-		url: "about:blank",
-		favorite: false},
-		
-		{id: 1337421,
-		name: "Aggression in the Opening",
-		description: "A quick analysis of how to play the opening in a way that puts pressure on the opponent.",
-		score: 10,
-		vote: 1,
-		rating: [1400,1400],
-		url: "google.com",
-		favorite: true},
-		
-		{id: 1337423,
-		name: "Rook-King Endgames",
-		description: "A thorough discussion of historical Rook-King endgames, and how to quickly analyze and play your own configurations.",
-		score: -10,
-		vote: -1,
-		rating: [1900,2000],
-		url: "google.com",
-		favorite: true},
-		]
-		//#######################################################################################################
-		*/
 		var writeToCookie = function(clear) {
 			var out;
 			if (clear) {

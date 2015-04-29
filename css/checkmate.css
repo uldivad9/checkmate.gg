@@ -243,6 +243,12 @@ hr {
 .summary_page .ratingpanel {
 	padding-top:15px;
 	padding-bottom:15px;
+	text-align:center;
+}
+
+.summary_page .ratingpanel span {
+	vertical-align:center;
+	display:inline-block;
 }
 
 .summary_page .scorepanel {
@@ -275,6 +281,11 @@ hr {
 	font-family: var(--main-sans);
 }
 
+.summary_page .summary_page_section {
+	border-bottom:none;
+	margin-top:10px;
+}
+
 .summary_page .review {
 	display:inline-block;
 	width:100%;
@@ -297,10 +308,19 @@ hr {
 .summary_page .rightcol {
 	float:right;
 }
+
 .summary_page .review_image {
     float:left;
     max-width:16%;
 }
+
+.summary_page .review_image img {
+	margin:10px;
+	padding:10px;
+	border-radius:2px;
+	border: 2px solid gainsboro;
+}
+
 .summary_page .review_text {
     float:left;
     max-width:83%;
