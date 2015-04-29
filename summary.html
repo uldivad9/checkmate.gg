@@ -34,62 +34,33 @@
 			}
 		});
 		
-		console.log($.getUrlVar("rid"));
-		var rid = $.getUrlVar("rid");
+		var rid = parseInt($.getUrlVar("rid"));
 		var resourceInfo = undefined;
-		for (int i=0; i<GLOBAL_RESOURCES.length; i++) {
+		for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
 			if (GLOBAL_RESOURCES[i].id === rid) {
-				//TODO ################################################
+				resourceInfo = GLOBAL_RESOURCES[i];
+				i = GLOBAL_RESOURCES.length;
 			}
 		}
 		
-		//#######################################################################################################
-		/**
-		 * 'id' should be resource's unique id. 
-		 * Backend stuff should actually happen here to return the resource data.
-		 * For now, zenbu wa hado codo (everything's hardcoded)
-		 */
-		//#######################################################################################################
-		
-		// MAGIC HAPPENS
-		/**
-		 * 'results' should be sorted by display order, with results[0] displayed first.
-		 * Each result item will be of the form:
-		 * {
-		 * id: 'Resource id'
-		 * name: pls
-		 * tags: A list of lower-case strings which are the tags.
-		 * description: Short description to be shown under the title
-		 * fullDescription: Long description of the resource
-		 * score: Upvote/downvote score
-		 * vote: User's vote (-1, 0, or 1)
-		 * rating: Approximate rating of target audience. An array of two integers.
-		 * url: External url
-		 * favorite: Boolean, true if this result is favorited by the logged-in user 
-		 * reviews: An object containing information about reviews.
-		 *   {
-		 *   rid: 'Review id'
-		 *   text: Review text
-		 *   author: Author's username
-		 *   uuid: Author's 'unique username id'
-		 *   }
-		 */
-		
 		var writeToCookie = function(clear) {
+			if (resourceInfo === undefined) {
+				out = {}
+				localStorage.storedResultData = JSON.stringify(out);
+				return;
+			}
 			var out;
 			if (clear) {
 				out={}
 			} else {
 				out=JSON.parse(localStorage.storedResultData);
 			}
-			for (var i=0; i<searchResults.length; i++) {
-				out[searchResults[i].id] = {
-					"score": searchResults[i].score,
-					"vote": searchResults[i].vote,
-					"favorite": searchResults[i].favorite,
-					"reviews": searchResults[i].reviews,
-				};
-			}
+			out[resourceInfo.id] = {
+				"score": resourceInfo.score,
+				"vote": resourceInfo.vote,
+				"favorite": resourceInfo.favorite,
+				"reviews": resourceInfo.reviews,
+			};
 			localStorage.storedResultData = JSON.stringify(out);
 			
 		}
@@ -100,29 +71,6 @@
 		} catch (e) {
 			writeToCookie(true);
 			console.log("Error with local storage. Local storage state has been reset.");
-		}	
-		
-		resourceInfo = {id: 1337420,
-		name: "A Primer to Caro-Kann",
-		tags: ["openings","caro-kann","intermediate"],
-		description: "This is an intermediate-level introduction to the Caro-Kann Defense.",
-		fullDescription: "This is an intermediate-level introduction to the Caro-Kann Defense, "+
-		"which begins with 1e4 c6. Players can use this reference to develop a stronger pawn "+
-		"structure following the opening move.",
-		score: 0,
-		vote: 0,
-		rating: [1200,1400],
-		url: "google.com",
-		favorite: false,
-		reviews:
-		[
-			{
-			rid: 0,
-			text: "A top quality introduction to a less common but powerful opening. Great for intermediates.",
-			author: "infinitestory",
-			uuid: 0
-			}
-		]
 		}
 		
 		placeTopOfPage();
@@ -150,6 +98,12 @@
 		var drawPage = function() {
 			$(".summarycontainer *").remove();
 			
+			if (resourceInfo === undefined) {
+				$(".summarycontainer").append("Error: resource not found.");
+				return;
+			}
+			
+			
 			$(".summarycontainer").append("<div class=\"resourcetitle\"><span class=\"largefocus\"><strong>"+resourceInfo.name+"</strong></span></div>");
 			$(".summarycontainer").append("<div class=\"tagsiconsrow\"/>");
 			var tagsstring = ""
@@ -168,14 +122,12 @@
 			$(".summarycontainer .rightcol").append("<hr width=\"100%\" size=\"1\" style=\"margin:0px; color:gainsboro;\"></hr>");
 			$(".summarycontainer .rightcol").append("<div class=\"resource_header ratingpanel\" style=\"text-align:center;\"></div>");
 			$(".summarycontainer .ratingpanel").append("<span><span title=\"FIDE chess skill rating\"><strong>Elo Rating:</strong><span class=\"ui-icon ui-icon help\"></span></span>~1600</span>");
-			
 			$(".summarycontainer").append("<hr width=\"100%\: size=\"2\" style=\"margin-top:20px; margin-bottom:20px; color:gainsboro;\"></hr>");
 			$(".summarycontainer").append("<div class=\"description\"><span>"+resourceInfo.fullDescription+"</span></div>");
 			$(".summarycontainer").append("<hr width=\"100%\: size=\"2\" style=\"margin-top:20px; margin-bottom:20px; color:gainsboro;\"></hr>");
 			$(".summarycontainer").append("<div class=\"summary_page_section\">");
 			$(".summarycontainer").append("<span><strong>Reviews: </strong><input type = \"button\" id = \"add_review_button\" value=\"Add review\"></input></span>");
 			for (var i=0; i<resourceInfo.reviews.length; i++) {
-				console.log(resourceInfo);
 				review = resourceInfo.reviews[i];
 				$(".summarycontainer .summary_page_section").append("<div class=\"review\"><div class=\"review_image\"><img src=\"./assets/pawn_avatar.png\" width=\"80px\" height=\"80px\"/></div></div>");
 				$(".summarycontainer .review:last").append("<div class=\"review_text\"><p>"+review.text+"</p><p class=\"authordata\">by "+review.author +", "+review.date+"</p></div></div>");
