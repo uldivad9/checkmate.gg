@@ -50,8 +50,8 @@
 			for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
 				var resource = GLOBAL_RESOURCES[i];
 				var relevancy = 0;
-				for (var i=0; i<resource.tags.length; i++) {
-					if (searchTags[resource.tags[i]]) {
+				for (var j=0; j<resource.tags.length; j++) {
+					if (searchTags[resource.tags[j]]) {
 						relevancy+=10000;
 					}
 				}
