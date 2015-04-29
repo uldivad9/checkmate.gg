@@ -113,7 +113,7 @@ var GLOBAL_RESOURCES = [
 	[
 	
 	]
-	}
+	},
 
 	{id: 1347423,
 	name: "Fundamental Chess Strategies for Beginners",
@@ -181,7 +181,7 @@ var GLOBAL_RESOURCES = [
 
 	{id: 1347427,
 	name: "Lines and Focal Points: The Heart and Soul of a Combination",
-	tags: ["lines","focal", "combination"]],
+	tags: ["lines","focal", "combination"],
 	description: "A description and illustration of the Alekhine-Chatard attack",
 	fullDescription: "A description and illustration of the Alekhine-Chatard attack",
 	score: +20,
@@ -197,7 +197,7 @@ var GLOBAL_RESOURCES = [
 
 	{id: 1347428,
 	name: "Scotch Opening: Blumenfeld Variation",
-	tags: ["scotch","opening", "blumenfeld"]],
+	tags: ["scotch","opening", "blumenfeld"],
 	description: "A game illustrating the power of mastering openings",
 	fullDescription: "A narration of a games, where skillful openings claimed victories",
 	score: +10,
