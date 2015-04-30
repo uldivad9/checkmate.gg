@@ -144,19 +144,23 @@
                                 delete_button
                             )  
                         )
-                    ))
+                    ));
+				
+				resourceInfo.reviews.unshift({rid:0, text:$("#new_review_text").val(), author: "infinitestory", date: now_m+"/"+now_d+"/"+now_y, uuid:0});
+				writeToCookie();
+				
                 $("#new_review_container").slideUp(400, function() {$("#new_review_container").remove()});
                 $("#add_review_button").attr("value", "Add new review");
                 
                 edit_button.click(function() {
                     $(this).attr("class", "ui-icon ui-icon-check")
                     console.log($(this).parent().parent().parent().html());
-                })
+                });
                 
                 delete_button.click(function() {
                     var review = $(this).parent().parent().parent();
                     review.slideUp(400, function() {$(this).remove()});
-                })
+                });
             }
         })
         
