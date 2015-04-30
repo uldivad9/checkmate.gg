@@ -127,6 +127,7 @@
 		//localStorage.clear();
 		
 		placeTopOfPage();
+        $("#searchfield").select2("val", tagList);
 		
 		var placeResult = function(result, i) {
 			$("#resultlisting").append("<div class=\"searchresult\">");

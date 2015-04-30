@@ -319,7 +319,7 @@ hr {
 
 .summary_page .review_image {
     float:left;
-    max-width:16%;
+    width:16%;
 }
 
 .summary_page .review_image img {
@@ -331,7 +331,7 @@ hr {
 
 .summary_page .review_text {
     float:left;
-    max-width:83%;
+    width:83%;
     word-wrap: break-word;
 }
 

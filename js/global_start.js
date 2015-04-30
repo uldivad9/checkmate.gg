@@ -36,13 +36,13 @@ var placeMiniSearchBar = function() {
 	$(document.body).prepend("<div id=\"minisearchbar\"></div>");
 	$("#minisearchbar").append("<center><div id=\"logo\"></div><div id=\"inputbox\"></div></center>");
 	$("#logo").append("<a href=\"./main.html\"><img id=\"logo_main\" src=\"assets/logo_main.png\" width=\"180px\" height=\"60px\" alt=\"Checkmate.gg logo\"></a>");
-	$("#logo").append("<a href=\"./main.html\"><img id=\"mani_glass\" src=\"assets/magni_glass.png\" width=\"180px\" height=\"60px\" alt=\"Checkmate.gg logo\"></a>");
 	$("#inputbox").append("<form id=\"searchform\" action=\"./results.html\" method=\"get\"><input id=\"searchfield\" type=\"text\" name=\"tags\" size=\"80\"/><button type=\"submit\" style=\"display: none;\"></form>");
 	$("#searchfield").select2({tags: ['caro-kann', 'opening', 'endgame', 'midgame'], multiple: true, width: '60%', openOnEnter: false});
 	/*$("#searchform").submit(function() {
 		console.log($("#searchfield").val());
 		window.location.href = "./results.html?tags="+$("#searchfield").val();
 	});*/
+    $("#s2id_searchfield .select2-choices").css("background-image", "url(\"assets/magnifying_glass.png\")").css("background-size", "20px").css("background-position", "calc(100% - 8px) center").css("background-repeat", "no-repeat");
 }
 
 var placeTopOfPage = function() {

@@ -113,7 +113,7 @@
 			for (var i=0; i<resourceInfo.reviews.length; i++) {
 				review = resourceInfo.reviews[i];
 				$("#reviews_container").append("<div class=\"review\"><div class=\"review_image\"><img src=\"./assets/pawn_avatar.png\" width=\"80px\" height=\"80px\"/></div></div>");
-				$("#reviews_container .review:last").append("<div class=\"review_text\"><p>"+review.text+"</p><p class=\"authordata\">by "+review.author +", "+review.date+(review.author=="infinitestory" ? "<span class=\"ui-icon ui-icon-pencil\" style=\"display:inline-block;margin-left:10px\"></span><span class=\"ui-icon ui-icon-trash\" style=\"display:inline-block\"></span>" : "")+"</p></div>");
+				$("#reviews_container .review:last").append("<div class=\"review_text\"><p style=\"white-space:pre\">"+review.text+"</p><p class=\"authordata\">by "+review.author +", "+review.date+(review.author=="infinitestory" ? "<span class=\"ui-icon ui-icon-pencil\" style=\"display:inline-block;margin-left:10px\"></span><span class=\"ui-icon ui-icon-trash\" style=\"display:inline-block\"></span>" : "")+"</p></div>");
 			}
 		}
 		
@@ -137,31 +137,58 @@
                 
                 $("#new_review_container").after($('<div>').attr("class", "review").append('<div class="review_image">\n<img src="./assets/pawn_avatar.png" width="80px" height="80px"/ style="margin:10px; padding:10px; border-radius:2px; border: 2px solid gainsboro;">\n</div>')
                     .append($('<div>').attr("class", "review_text").append(
-                        $('<p>').html($("#new_review_text").val())).append(
+                        $('<p>').css("white-space","pre").html($("#new_review_text").val())).append(
                             $('<p>').attr("class", "authordata").html("by infinitestory, "+now_m+"/"+now_d+"/"+now_y).append(
                                 edit_button
                             ).append(
                                 delete_button
                             )  
                         )
-                    ))
+                    ));
+				
+				resourceInfo.reviews.unshift({rid:0, text:$("#new_review_text").val(), author: "infinitestory", date: now_m+"/"+now_d+"/"+now_y, uuid:0});
+				writeToCookie();
+				
                 $("#new_review_container").slideUp(400, function() {$("#new_review_container").remove()});
                 $("#add_review_button").attr("value", "Add new review");
                 
                 edit_button.click(function() {
-                    $(this).attr("class", "ui-icon ui-icon-check")
-                    console.log($(this).parent().parent().parent().html());
+                    if ($(this).attr("class") == "ui-icon ui-icon-check") {
+                        $(this).attr("class", "ui-icon ui-icon-pencil")
+                        var changeText = $(this).parent().parent().parent().find(".review_text textarea").first();
+                        var text = $("<p>").css("white-space", "pre").html(changeText.val());
+                        changeText.replaceWith(text);
+                    }
+                    else {
+                        $(this).attr("class", "ui-icon ui-icon-check")
+                        var text = $(this).parent().parent().parent().find(".review_text p").first();
+                        var changeText = $("<textarea>").css("width", "100%").val(text.html());
+                        text.replaceWith(changeText);
+                        changeText.height(changeText[0].scrollHeight);
+                    }
                 })
                 
                 delete_button.click(function() {
                     var review = $(this).parent().parent().parent();
                     review.slideUp(400, function() {$(this).remove()});
-                })
+                });
             }
         })
         
         $(".ui-icon-pencil").click(function() {
-            console.log($(this).parent().parent().parent().html());
+                    if ($(this).attr("class") == "ui-icon ui-icon-check") {
+                        $(this).attr("class", "ui-icon ui-icon-pencil")
+                        var changeText = $(this).parent().parent().parent().find(".review_text textarea").first();
+                        var text = $("<p>").html(changeText.val());
+                        changeText.replaceWith(text);
+                    }
+                    else {
+                        $(this).attr("class", "ui-icon ui-icon-check")
+                        var text = $(this).parent().parent().parent().find(".review_text p").first();
+                        var changeText = $("<textarea>").css("width", "100%").val(text.html());
+                        text.replaceWith(changeText);
+                        changeText.height(changeText[0].scrollHeight);
+                    }
         })
         
         $(".ui-icon-trash").click(function() {
