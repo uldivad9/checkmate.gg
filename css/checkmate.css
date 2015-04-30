@@ -102,7 +102,7 @@ hr {
 /**
  * A single search item.
  */
-.searchresult, .summarycontainer {
+.searchresult, .summarycontainer, .profilecontainer {
 	border-radius:5px;
 	border: 1px solid gray;
 	background: whitesmoke;
@@ -227,6 +227,16 @@ hr {
 .summary_page .resourcetitle {
 	margin-top:50px;
 	margin-bottom:15px;
+	text-align:center;
+}
+
+.profileusername {
+	margin-top:15px;
+	margin-bottom:15px;
+	text-align:center;
+}
+.profilerating, .profilebioheading {
+	font-size:20px;
 	text-align:center;
 }
 
