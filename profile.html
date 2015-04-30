@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="jquery/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="jquery/jquery-ui-1.10.0.custom.min.js"></script>
+<script type="text/javascript" src="select2/select2-3.5.2/select2.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link type="text/css" href="css/checkmate.css" rel="stylesheet" />
+<link type="text/css" href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+<link type="text/css" href="select2/select2-3.5.2/select2.css" rel="stylesheet" />
+<script type="text/javascript" src="js/global_start.js"></script>
+<script type="text/javascript" src="js/resourceful.js"></script>
+<script type="text/javascript">
+    $(window).load(function() {
+        
+        //This script extracts parameters from the URL
+        //from jquery-howto.blogspot.com
+        $.extend({
+            getUrlVars : function() {
+                var vars = [], hash;
+                var hashes = window.location.href.slice(
+                        window.location.href.indexOf('?') + 1).split('&');
+                for ( var i = 0; i < hashes.length; i++) {
+                    hash = hashes[i].split('=');
+                    vars.push(hash[0]);
+                    vars[hash[0]] = hash[1];
+                }
+                return vars;
+            },
+            getUrlVar : function(name) {
+                return $.getUrlVars()[name];
+            }
+        });
+        
+        var rid = parseInt($.getUrlVar("rid"));
+        var resourceInfo = undefined;
+        for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
+            if (GLOBAL_RESOURCES[i].id === rid) {
+                resourceInfo = GLOBAL_RESOURCES[i];
+                i = GLOBAL_RESOURCES.length;
+            }
+        }
+        
+        var writeToCookie = function(clear) {
+            if (resourceInfo === undefined) {
+                out = {}
+                for (var i=0; i<GLOBAL_RESULTS.length; i++) {
+                    out[GLOBAL_RESULTS[i].id] = GLOBAL_RESULTS[i];
+                }
+                return;
+            }
+            var out;
+            if (clear) {
+                out={}
+                for (var i=0; i<GLOBAL_RESULTS.length; i++) {
+                    out[GLOBAL_RESULTS[i].id] = GLOBAL_RESULTS[i];
+                }
+            } else {
+                out=JSON.parse(localStorage.storedResultData);
+            }
+            out[resourceInfo.id] = resourceInfo;
+            localStorage.storedResultData = JSON.stringify(out);
+        }
+        
+        try {
+            cookies = JSON.parse(localStorage.storedResultData);
+            console.log(cookies);
+            stored = cookies[resourceInfo.id];
+            if (stored != undefined) {
+                resourceInfo = stored;
+            }
+        } catch (e) {
+            writeToCookie(true);
+            console.log("Error with local storage. Local storage state has been reset.");
+        }
+        
+        placeTopOfPage();
+        });
+</script>
+</head>
+<body>
+    Profile Page
+    <script type="text/javascript" src="js/global_end.js"></script>
+<script type="text/javascript">
+    
+</script>
+    </body>
+</html>

@@ -7,7 +7,7 @@ var heart_button_filled_html = "<img class=\"heartbutton\" width=\"32px\" height
 +"onmouseout=\"this.src='./assets/heart_filled.png'\">";
 
 var gear_button_html = "<img width=\"32px\" height=\"32px\" src=\"./assets/gear.png\" onmouseover=\"this.src='./assets/gear_shadow.png'\" onmouseout=\"this.src='./assets/gear.png'\">";
-var account_button_html = "<img width=\"32px\" height=\"32px\" src=\"./assets/account.png\" onmouseover=\"this.src='./assets/account_shadow.png'\" onmouseout=\"this.src='./assets/account.png'\">";
+var account_button_html = "<img class=\"accountbutton\" width=\"32px\" height=\"32px\" src=\"./assets/account.png\" onmouseover=\"this.src='./assets/account_shadow.png'\" onmouseout=\"this.src='./assets/account.png'\">";
 
 var extlink_button_html = "<img width=\"32px\" height=\"32px\" src=\"./assets/extlink.png\" onmouseover=\"this.src='./assets/extlink_shadow.png'\" onmouseout=\"this.src='./assets/extlink.png'\">";
 
@@ -26,6 +26,9 @@ var placeControlPanel = function() {
     $('.heartbutton:first').click(function() {
             window.location = "./favorites.html";
     });
+    $('.accountbutton:first').click(function() {
+            window.location = "./profile.html";
+    });
 }
 
 var placeMiniSearchBar = function() {
@@ -33,6 +36,7 @@ var placeMiniSearchBar = function() {
 	$(document.body).prepend("<div id=\"minisearchbar\"></div>");
 	$("#minisearchbar").append("<center><div id=\"logo\"></div><div id=\"inputbox\"></div></center>");
 	$("#logo").append("<a href=\"./main.html\"><img id=\"logo_main\" src=\"assets/logo_main.png\" width=\"180px\" height=\"60px\" alt=\"Checkmate.gg logo\"></a>");
+	$("#logo").append("<a href=\"./main.html\"><img id=\"mani_glass\" src=\"assets/magni_glass.png\" width=\"180px\" height=\"60px\" alt=\"Checkmate.gg logo\"></a>");
 	$("#inputbox").append("<form id=\"searchform\" action=\"./results.html\" method=\"get\"><input id=\"searchfield\" type=\"text\" name=\"tags\" size=\"80\"/><button type=\"submit\" style=\"display: none;\"></form>");
 	$("#searchfield").select2({tags: ['caro-kann', 'opening', 'endgame', 'midgame'], multiple: true, width: '60%', openOnEnter: false});
 	/*$("#searchform").submit(function() {
