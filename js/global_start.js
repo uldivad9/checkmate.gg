@@ -43,7 +43,7 @@ var placeMiniSearchBar = function() {
 		console.log($("#searchfield").val());
 		window.location.href = "./results.html?tags="+$("#searchfield").val();
 	});*/
-    $("#s2id_searchfield .select2-choices").css("background-image", "url(\"assets/magnifying_glass.png\")").css("background-size", "20px").css("background-position", "calc(100% - 8px) calc(50%)").css("background-repeat", "no-repeat");
+    $("#s2id_searchfield .select2-choices").css("background-image", "url(\"assets/magnifying_glass.png\")").css("background-size", "20px").css("background-position", "calc(100% - 8px) center").css("background-repeat", "no-repeat");
 }
 
 var placeTopOfPage = function() {
