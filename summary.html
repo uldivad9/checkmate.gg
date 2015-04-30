@@ -91,11 +91,11 @@
 			$(".summarycontainer").append("<div class=\"tagsiconsrow\"/>");
 			var tagsstring = ""
 			for (var i=0; i<resourceInfo.tags.length-1; i++) {
-				tagsstring+=resourceInfo.tags[i];
+				tagsstring+="<a href=\"./results.html?tags="+resourceInfo.tags[i]+"\">"+resourceInfo.tags[i]+"</a>";
 				tagsstring+=", ";
 			}
 			if (resourceInfo.tags.length > 0) {
-				tagsstring+=resourceInfo.tags[resourceInfo.tags.length-1];
+				tagsstring+="<a href=\"./results.html?tags="+resourceInfo.tags[i]+"\">"+resourceInfo.tags[i]+"</a>";
 			}
 			$(".summarycontainer .tagsiconsrow").append("<div class=\"resource_tags\"><p><strong>Tags: </strong>"+tagsstring+"</p></div>");
 			$(".summarycontainer .tagsiconsrow").append("<div class=\"rightcol\"><div class=\"resource_header scorepanel\"></div></div>");
@@ -144,7 +144,11 @@
                                 delete_button
                             )  
                         )
-                    ))
+                    ));
+				
+				resourceInfo.reviews.unshift({rid:0, text:$("#new_review_text").val(), author: "infinitestory", date: now_m+"/"+now_d+"/"+now_y, uuid:0});
+				writeToCookie();
+				
                 $("#new_review_container").slideUp(400, function() {$("#new_review_container").remove()});
                 $("#add_review_button").attr("value", "Add new review");
                 
@@ -167,7 +171,7 @@
                 delete_button.click(function() {
                     var review = $(this).parent().parent().parent();
                     review.slideUp(400, function() {$(this).remove()});
-                })
+                });
             }
         })
         
