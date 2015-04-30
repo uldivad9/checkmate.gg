@@ -149,8 +149,19 @@
                 $("#add_review_button").attr("value", "Add new review");
                 
                 edit_button.click(function() {
-                    $(this).attr("class", "ui-icon ui-icon-check")
-                    console.log($(this).parent().parent().parent().html());
+                    if ($(this).attr("class") == "ui-icon ui-icon-check") {
+                        $(this).attr("class", "ui-icon ui-icon-pencil")
+                        var changeText = $(this).parent().parent().parent().find(".review_text textarea").first();
+                        var text = $("<p>").html(changeText.val());
+                        changeText.replaceWith(text);
+                    }
+                    else {
+                        $(this).attr("class", "ui-icon ui-icon-check")
+                        var text = $(this).parent().parent().parent().find(".review_text p").first();
+                        var changeText = $("<textarea>").css("width", "100%").val(text.html());
+                        text.replaceWith(changeText);
+                        changeText.height(changeText[0].scrollHeight);
+                    }
                 })
                 
                 delete_button.click(function() {
