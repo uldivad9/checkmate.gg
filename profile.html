@@ -16,7 +16,24 @@
     $(window).load(function() {
         
         placeTopOfPage();
+
+
+    $(".ui-icon-pencil").click(function() {
+                    if ($(this).attr("class") == "ui-icon ui-icon-check") {
+                        $(this).attr("class", "ui-icon ui-icon-pencil")
+                        var changeText = $(".profilebiography textarea").first();
+                        var text = $("<p>").html(changeText.val());
+                        changeText.replaceWith(text);
+                    }
+                    else {
+                        $(this).attr("class", "ui-icon ui-icon-check")
+                        var text = $(".profilebiography p").first();
+                        var changeText = $("<textarea>").css("width", "100%").val(text.html());
+                        text.replaceWith(changeText);
+                        changeText.height(changeText[0].scrollHeight);
+                    }
         });
+    });
 </script>
 </head>
 <body>
@@ -25,8 +42,8 @@
     <div class="profileusername"><span class="largefocus"><strong>Infinitestory</strong></span></div>
     <div class="profilerating"><strong>ELO Rating: 1600</strong></div>
     <hr width="100%; size=2" style="margin-top:20px; margin-bottom:20px; color:gainsboro;"></hr>
-    <div class="profilebioheading"><strong>About Infinitestory</strong></div>
-    <div class="profilediography"><p>Biography text goes here</p></div>
+    <div class="profilebioheading" style="margin-bottom:10px;"><strong>About Infinitestory</strong><span class="ui-icon ui-icon-pencil" style="display:inline-block;margin-left:10px;"></span></div>
+    <div class="profilebiography"><p style="white-space:pre;">Biography text goes here</p></div>
     <script type="text/javascript" src="js/global_end.js"></script>
 <script type="text/javascript">
     
