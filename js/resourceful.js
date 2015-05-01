@@ -22,6 +22,8 @@
  *   }
  */
 
+var NEXT_RID = 1;
+
 var GLOBAL_RESOURCES = [
 	{id: 1337420,
 	name: "A Primer to Caro-Kann",
