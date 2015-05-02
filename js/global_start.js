@@ -6,7 +6,7 @@ var heart_button_filled_html = "<img class=\"heartbutton\" width=\"32px\" height
 +"onmouseover=\"this.src='./assets/heart_filled_shadow.png'\" "
 +"onmouseout=\"this.src='./assets/heart_filled.png'\">";
 
-var gear_button_html = "<img width=\"32px\" height=\"32px\" src=\"./assets/gear.png\" onmouseover=\"this.src='./assets/gear_shadow.png'\" onmouseout=\"this.src='./assets/gear.png'\">";
+var gear_button_html = "<img class=\"gearbutton\" width=\"32px\" height=\"32px\" src=\"./assets/gear.png\" onmouseover=\"this.src='./assets/gear_shadow.png'\" onmouseout=\"this.src='./assets/gear.png'\">";
 var account_button_html = "<img class=\"accountbutton\" width=\"32px\" height=\"32px\" src=\"./assets/account.png\" onmouseover=\"this.src='./assets/account_shadow.png'\" onmouseout=\"this.src='./assets/account.png'\">";
 
 var extlink_button_html = "<img width=\"32px\" height=\"32px\" src=\"./assets/extlink.png\" onmouseover=\"this.src='./assets/extlink_shadow.png'\" onmouseout=\"this.src='./assets/extlink.png'\">";
@@ -28,6 +28,9 @@ var placeControlPanel = function() {
     });
     $('.accountbutton:first').click(function() {
             window.location = "./profile.html";
+    });
+    $('.gearbutton:first').click(function() {
+            window.location = "./settings.html";
     });
 }
 

@@ -102,7 +102,7 @@ hr {
 /**
  * A single search item.
  */
-.searchresult, .summarycontainer, .profilecontainer {
+.searchresult, .summarycontainer, .profilecontainer, .settingscontainer {
 	border-radius:5px;
 	border: 1px solid gray;
 	background: whitesmoke;
@@ -230,12 +230,12 @@ hr {
 	text-align:center;
 }
 
-.profileusername {
+.profileusername, .settingsheading {
 	margin-top:15px;
 	margin-bottom:15px;
 	text-align:center;
 }
-.profilerating, .profilebioheading {
+.profilerating, .profilebioheading, .settingssubheading {
 	font-size:20px;
 	text-align:center;
 }
@@ -337,4 +337,17 @@ hr {
 
 .add_review_button {
 	text-align: center;
+}
+
+.settings_page .sorting_option {
+	padding:10px;
+	margin:10px;
+}
+
+.settings_page #selectable .ui-selecting { 
+	background: #FFFFCC; 
+}
+
+.settings_page #selectable .ui-selected { 
+	background: #FFCC66;
 }
