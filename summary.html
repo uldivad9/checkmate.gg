@@ -243,7 +243,7 @@
 			} else {
 				$(".heart_button").append(heart_button_html);
 			}
-			$(".heartbutton").click(function() {
+			$(".summarycontainer .heartbutton").click(function() {
 				resourceInfo.favorite = !resourceInfo.favorite;
 				$(".heart_button *").remove();
 				drawHeartButton();

@@ -91,6 +91,16 @@ hr {
 	margin: 4px;
 }
 
+.results-top {
+	width:800px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.results-top a {
+	text-decoration:none;
+}
+
 /**
  * Listing of search results.
  */

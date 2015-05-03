@@ -36,15 +36,23 @@
 		
 		//console.log($.getUrlVar("tags"));
 		
-		var tagList = [$.getUrlVar("tags").split("%2C")];
+		var tags = $.getUrlVar("tags");
+		var tagList = [tags.split("%2C")];
 		var searchTags = {}
 		for (var i=0; i<tagList.length; i++) {
 			searchTags[tagList[i]] = true;
 		}
 		
 		searchResults = [];
+		var sortBy = 0;
+		if ($.getUrlVar("sort") != undefined) {
+			sortBy = $.getUrlVar("sort")
+		} else {
+			sortBy = "relevancy"
+		}
 		
-		{
+		
+		if (sortBy === "relevancy") {
 		
 			var resourcesWithRelevancy = [];
 			for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
@@ -68,13 +76,76 @@
 			}
 			
 			resourcesWithRelevancy.sort(function(a,b) {
-				return a-b;
+				return b.relevancy-a.relevancy;
 			});
 			
 			for (var i=0; i<resourcesWithRelevancy.length; i++) {
 				searchResults.push(resourcesWithRelevancy[i].resource);
 			}
 			
+		} else if (sortBy === "score") {
+			var resourcesWithRelevancy = [];
+			for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
+				var resource = GLOBAL_RESOURCES[i];
+				var relevancy = 0;
+				var match = false;
+				for (var j=0; j<resource.tags.length; j++) {
+					if (searchTags[resource.tags[j]]) {
+						match = true;
+						j = resource.tags.length;
+					}
+				}
+				relevancy+=resource.score;
+				
+				if (match) {
+					resourcesWithRelevancy.push(
+						{
+							"resource": resource,
+							"relevancy": relevancy,
+						}
+					);
+				}
+			}
+			
+			resourcesWithRelevancy.sort(function(a,b) {
+				return b.relevancy-a.relevancy;
+			});
+			
+			for (var i=0; i<resourcesWithRelevancy.length; i++) {
+				searchResults.push(resourcesWithRelevancy[i].resource);
+			}
+		} else if (sortBy === "rating") {
+			var resourcesWithRelevancy = [];
+			for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
+				var resource = GLOBAL_RESOURCES[i];
+				var relevancy = 0;
+				var match = false;
+				for (var j=0; j<resource.tags.length; j++) {
+					if (searchTags[resource.tags[j]]) {
+						match = true;
+						j = resource.tags.length;
+					}
+				}
+				//THIS SHOULD TAKE INTO ACCOUNT THE USER'S ACTUAL ELO
+				relevancy-=Math.abs(resource.rating[0]+resource.rating[1] - 3200);
+				relevancy+=resource.score/10;
+				if (match) {
+					resourcesWithRelevancy.push(
+						{
+							"resource": resource,
+							"relevancy": relevancy,
+						}
+					);
+				}
+			}
+			
+			resourcesWithRelevancy.sort(function(a,b) {
+				return b.relevancy-a.relevancy;
+			});
+			
+			for (var i=0; i<resourcesWithRelevancy.length; i++) {
+				searchResults.push(resourcesWithRelevancy[i].resource);
+			}
 		}
 		
 		
@@ -135,8 +206,6 @@
 			$(".leftcol:last").append("<div class=\"name\"></div><div class=\"description\"></div>");
 			$(".name:last").append("<a href=\"./summary.html?rid="+result.id+"\"></a>")
 			$(".name:last > a").text(result.name);
-			//$(".name:last").append("<span></span>");
-			//$(".name:last > span").text(result.name);
 			$(".description:last").append("<span></span>");
 			$(".description:last > span").text(result.description);
 			$(".rightcol:last").append("<div class=\"buttonpane\"></div><hr width=\"100%\" size=\"1\" style=\"margin:0px; color:gainsboro;\"></hr><div class=\"rating\"></div>");
@@ -202,6 +271,14 @@
 		
 		var refreshResults = function() {
 			$("#resultlisting *").remove();
+			//sort by relevancy, score, or rating
+			if (sortBy === "score") {
+				$(".large").after("<p>Sort by: &nbsp; &nbsp;<a href=\"./results.html?tags="+tags+"&sort=relevancy\">Relevancy &nbsp; &nbsp; &nbsp;</a><strong>Popularity &nbsp; &nbsp; &nbsp;</strong><a href=\"./results.html?tags="+tags+"&sort=rating\">Elo Rating </a></p>");
+			} else if (sortBy === "rating") {
+				$(".large").after("<p>Sort by: &nbsp; &nbsp;<a href=\"./results.html?tags="+tags+"&sort=relevancy\">Relevancy &nbsp; &nbsp; &nbsp;</a><a href=\"./results.html?tags="+tags+"&sort=score\">Popularity &nbsp; &nbsp; &nbsp;</a><strong>Elo Rating </strong></p>");
+			} else {
+				$(".large").after("<p>Sort by: &nbsp; &nbsp;<strong>Relevancy &nbsp; &nbsp; &nbsp;</strong><a href=\"./results.html?tags="+tags+"&sort=score\">Popularity &nbsp; &nbsp; &nbsp;</a><a href=\"./results.html?tags="+tags+"&sort=rating\">Elo Rating </a></p>");
+			}
 			for (var i=0; i<searchResults.length; i++) {
 				result = searchResults[i];
 				placeResult(result,i);
@@ -215,18 +292,17 @@
 </head>
 <body>
 
-<!-- i feel so empty -->
-
 <div style="margin-top:10px">
-<!--<div style="width:62%; float:right; visibility:hidden;">inazuma is my waifu</div>-->
-<div style="width:800px; margin-left:auto; margin-right:auto;">
-<br>
-<span class="large" style="text-transform:capitalize; color:#1C1C1C">Search Results:</span>
-</div>
+	<div class="results-top">
+	<br/>
+		<span class="large" style="text-transform:capitalize; color:#1C1C1C">Search Results</span>
+	</div>
 </div>
 
 <div id="resultlisting" class="resultlisting">
-	
+	<div>
+	Error loading page.
+	</div>
 </div>
 
 <script type="text/javascript" src="js/global_end.js"></script>
