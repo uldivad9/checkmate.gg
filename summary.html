@@ -205,7 +205,7 @@
 			if ($(this).attr("class") == "ui-icon ui-icon-check") {
 				$(this).attr("class", "ui-icon ui-icon-pencil")
 				var changeText = $(this).parent().parent().parent().find(".review_text textarea").first();
-				var text = $("<p>").html(changeText.val());
+				var text = $("<p>").css("white-space", "pre").html(changeText.val());
 				changeText.replaceWith(text);
 				var review = $(this).parent().parent().parent();
 				for (var i=0; i<resourceInfo.reviews.length; i++) {
