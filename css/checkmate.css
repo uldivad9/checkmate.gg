@@ -363,10 +363,7 @@ hr {
 	margin:10px;
 }
 
-.settings_page #selectable .ui-selecting { 
-	background: #FFFFCC; 
-}
-
-.settings_page #selectable .ui-selected { 
-	background: #FFCC66;
+.profile_page .profilebiography {
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }
