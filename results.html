@@ -218,7 +218,7 @@
 				refreshResults();
 				writeToCookie();
 			});
-			$(".buttonpane:last").append("<div class=\"button\">"+extlink_button_html+"</div><div class=\"scorewidget\"></div>");
+			$(".buttonpane:last").append("<div class=\"button\"><a href=\""+searchResults[i].url+"\">"+extlink_button_html+"</a></div><div class=\"scorewidget\"></div>");
 			$(".scorewidget:last").append("<div class=\"scorebuttons\"></div>");
 			if (result.vote == 0) {
 				$(".scorebuttons:last").append("<div>"+up_button_html+"</div><div>"+down_button_html+"</div>");

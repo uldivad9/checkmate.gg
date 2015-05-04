@@ -150,12 +150,28 @@ var GLOBAL_RESOURCES = [
 	},
 
 	{id: 1347425,
-	name: "The Power of Positional Chess, Pt 1 - Manuvering",
-	tags: ["positional","manuvering"],
+	name: "The Power of Positional Chess, Pt. 1 - Maneuvering",
+	tags: ["positional","maneuvering"],
 	description: "Tips on playing positional chess",
-	fullDescription: "Tips on playing positional chess with a focus on manuvering.  Includes various illustrated example games",
+	fullDescription: "Tips on playing positional chess with a focus on manuvering.  Includes various illustrated example games.",
 	score: +100,
 	vote: +1,
+	rating: [1800,2100],
+	url: "google.com",
+	favorite: true,
+	reviews:
+	[
+	
+	]
+	},
+
+	{id: 2347425,
+	name: "The Power of Positional Chess, Pt. 2",
+	tags: ["positional"],
+	description: "Tips on playing positional chess (continued)",
+	fullDescription: "Continuation of 'The Power of Positional Chess, Pt. 1 - Maneuvering,' with more example games. ",
+	score: -100,
+	vote: +15,
 	rating: [1800,2100],
 	url: "google.com",
 	favorite: true,
