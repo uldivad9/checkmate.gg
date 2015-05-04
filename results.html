@@ -45,12 +45,13 @@
 		
 		searchResults = [];
 		var sortBy = 0;
-		if ($.getUrlVar("sort") != undefined) {
-			sortBy = $.getUrlVar("sort")
+		if ($.getUrlVar("sortBy") != undefined) {
+			sortBy = $.getUrlVar("sortBy")
 		} else {
 			sortBy = "relevancy"
 		}
 		
+        console.log(sortBy);
 		
 		if (sortBy === "relevancy") {
 		
@@ -273,11 +274,11 @@
 			$("#resultlisting *").remove();
 			//sort by relevancy, score, or rating
 			if (sortBy === "score") {
-				$(".large").after("<p>Sort by: &nbsp; &nbsp;<a href=\"./results.html?tags="+tags+"&sort=relevancy\">Relevancy &nbsp; &nbsp; &nbsp;</a><strong>Popularity &nbsp; &nbsp; &nbsp;</strong><a href=\"./results.html?tags="+tags+"&sort=rating\">Elo Rating </a></p>");
+				$(".large").after("<p>Sort by: &nbsp; &nbsp;<a href=\"./results.html?tags="+tags+"&sortBy=relevancy\">Relevancy &nbsp; &nbsp; &nbsp;</a><strong>Popularity &nbsp; &nbsp; &nbsp;</strong><a href=\"./results.html?tags="+tags+"&sortBy=rating\">Elo Rating </a></p>");
 			} else if (sortBy === "rating") {
-				$(".large").after("<p>Sort by: &nbsp; &nbsp;<a href=\"./results.html?tags="+tags+"&sort=relevancy\">Relevancy &nbsp; &nbsp; &nbsp;</a><a href=\"./results.html?tags="+tags+"&sort=score\">Popularity &nbsp; &nbsp; &nbsp;</a><strong>Elo Rating </strong></p>");
+				$(".large").after("<p>Sort by: &nbsp; &nbsp;<a href=\"./results.html?tags="+tags+"&sortBy=relevancy\">Relevancy &nbsp; &nbsp; &nbsp;</a><a href=\"./results.html?tags="+tags+"&sortBy=score\">Popularity &nbsp; &nbsp; &nbsp;</a><strong>Elo Rating </strong></p>");
 			} else {
-				$(".large").after("<p>Sort by: &nbsp; &nbsp;<strong>Relevancy &nbsp; &nbsp; &nbsp;</strong><a href=\"./results.html?tags="+tags+"&sort=score\">Popularity &nbsp; &nbsp; &nbsp;</a><a href=\"./results.html?tags="+tags+"&sort=rating\">Elo Rating </a></p>");
+				$(".large").after("<p>Sort by: &nbsp; &nbsp;<strong>Relevancy &nbsp; &nbsp; &nbsp;</strong><a href=\"./results.html?tags="+tags+"&sortBy=score\">Popularity &nbsp; &nbsp; &nbsp;</a><a href=\"./results.html?tags="+tags+"&sortBy=rating\">Elo Rating </a></p>");
 			}
 			for (var i=0; i<searchResults.length; i++) {
 				result = searchResults[i];
