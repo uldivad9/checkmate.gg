@@ -122,7 +122,7 @@
 			for (var i=0; i<resourceInfo.reviews.length; i++) {
 				review = resourceInfo.reviews[i];
 				$("#reviews_container").append("<div class=\"review\"><div class=\"review_image\"><img src=\"./assets/pawn_avatar.png\" width=\"80px\" height=\"80px\"/></div></div>");
-				$("#reviews_container .review:last").append("<div class=\"review_text\"><p style=\"white-space:pre\">"+review.text+"</p><p class=\"authordata\">by "+review.author +", "+review.date+(review.author=="infinitestory" ? "<span class=\"ui-icon ui-icon-pencil\" style=\"display:inline-block;margin-left:10px\"></span><span class=\"ui-icon ui-icon-trash\" style=\"display:inline-block\"></span>" : "")+"</p></div>");
+				$("#reviews_container .review:last").append("<div class=\"review_text\"><p>"+review.text+"</p><p class=\"authordata\">by "+review.author +", "+review.date+(review.author=="infinitestory" ? "<span class=\"ui-icon ui-icon-pencil\" style=\"display:inline-block;margin-left:10px\"></span><span class=\"ui-icon ui-icon-trash\" style=\"display:inline-block\"></span>" : "")+"</p></div>");
 				$("#reviews_container .review:last").attr("rid",resourceInfo.reviews[i].rid);
 			}
 			

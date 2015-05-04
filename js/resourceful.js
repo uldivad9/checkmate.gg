@@ -35,7 +35,7 @@ var GLOBAL_RESOURCES = [
 	score: 0,
 	vote: 0,
 	rating: [1200,1400],
-	url: "google.com",
+	url: "https://www.google.com/webhp?hl=en#hl=en&q=primer+caro+kann",
 	favorite: false,
 	reviews:
 	[
@@ -44,6 +44,31 @@ var GLOBAL_RESOURCES = [
 		text: "A top quality introduction to a less common but powerful opening. Great for intermediates.",
 		author: "infinitestory",
 		date: "1/1/11",
+		uuid: 0
+		}
+	]
+	},
+
+	{id: 2337420,
+	name: "Caro-Kann: Move by Move",
+	tags: ["openings","caro-kann","book","IAP","whale"],
+	description: "A book to help chess players master the Caro-Kann opening.",
+	fullDescription: "Long-hailed as one of Black's most reliable defensive openings, the Caro-Kann"+
+	" defense is an opening style worth exploring move-by-move. In this book, international master Cyrus"+
+	" Lakdawala guides players through the finer points of the Caro-Kann openings with meticulously chosen"+
+	" problems and solutions.",
+	score: 21,
+	vote: 0,
+	rating: [1500,1800],
+	url: "http://www.amazon.com/Caro-Kann-Move-Cyrus-Lakdawala/dp/1857446879",
+	favorite: true,
+	reviews:
+	[
+		{
+		rid: 0,
+		text: "Oh. My. Lakdawala is the best teacher of the Caro-Kann defense, and Caro-Kann: Move by Move proves it.",
+		author: "george_takei",
+		date: "2/2/15",
 		uuid: 0
 		}
 	]
@@ -89,7 +114,7 @@ var GLOBAL_RESOURCES = [
 	score: -86,
 	vote: +1,
 	rating: [0,2400],
-	url: "google.com",
+	url: "http://www.artofproblemsolving.com/community/c1466h1085189_muh_openings",
 	favorite: true,
 	reviews:
 	[
