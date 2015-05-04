@@ -109,7 +109,25 @@ var GLOBAL_RESOURCES = [
 	score: 50,
 	vote: 0,
 	rating: [2000,2000],
-	url: "google.com",
+	url: "https://www.google.com/webhp?hl=en#hl=en&q=analogies+between+chess+and+league+of+legends",
+	favorite: false,
+	reviews:
+	[
+	
+	]
+	},
+
+	{id: 2337424,
+	name: "A Beginner's Guide to Visual Read in League and Chess",
+	tags: ["chess","lol","beginner","positional"],
+	description: "A novice-friendly guide to visual read, a critical aspect of two popular competitive games.",
+	fullDescription: "A novice-friendly guide from the Summoner School Subreddit (r/summonerschool) about"+
+	" visual read, a critical aspect of two popular competitive games: Chess, and League of Legends. Examples from"+
+	" top-level plays in both games are presented and fleshed-out in detail.",
+	score: 51,
+	vote: 0,
+	rating: [2000,2000],
+	url: "http://www.reddit.com/r/summonerschool/comments/2a53kr/a_beginners_guide_to_visual_read_in_league_and/",
 	favorite: true,
 	reviews:
 	[
@@ -157,7 +175,7 @@ var GLOBAL_RESOURCES = [
 	score: +100,
 	vote: +1,
 	rating: [1800,2100],
-	url: "google.com",
+	url: "http://www.chess.com/article/view/the-power-of-positional-chess-pt-1---maneuvering",
 	favorite: true,
 	reviews:
 	[
@@ -173,7 +191,7 @@ var GLOBAL_RESOURCES = [
 	score: -100,
 	vote: +15,
 	rating: [1800,2100],
-	url: "google.com",
+	url: "http://www.chess.com/article/view/the-power-of-positional-chess-part-2",
 	favorite: true,
 	reviews:
 	[
@@ -221,7 +239,7 @@ var GLOBAL_RESOURCES = [
 	score: +10,
 	vote: -1,
 	rating: [1500,2300],
-	url: "google.com",
+	url: "https://www.sparkchess.com/scotch-opening-blumenfeld-variation.html",
 	favorite: false,
 	reviews:
 	[
@@ -230,3 +248,5 @@ var GLOBAL_RESOURCES = [
 	},
 
 ]
+
+var allTags = []
