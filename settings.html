@@ -16,12 +16,13 @@
     $(window).load(function() {
 
         
-        placeTopOfPage();
-    $( "#selectable" ).selectable();
-    $('#selectable li:first').addClass('ui-selected');
-    $(".save_button").button();
+	placeTopOfPage();
     
-    var sortBy = "relevancy"// load this from local storage
+    var sortBy = localStorage.sortBy;
+	if (sortBy != "score" && sortBy != "rating") {
+		sortBy = "relevance";
+		localStorage.sortBy = sortBy;
+	}
     
     var refreshSorting = function() {
         $("#sortcontainer").remove();
@@ -35,16 +36,19 @@
         
         $("#sortbyscore").click(function() {
             sortBy = "score";
+			localStorage.sortBy = sortBy;
             refreshSorting();
         });
         
         $("#sortbyrating").click(function() {
             sortBy = "rating";
+			localStorage.sortBy = sortBy;
             refreshSorting();
         });
         
         $("#sortbyrelevancy").click(function() {
             sortBy = "relevancy";
+			localStorage.sortBy = sortBy;
             refreshSorting();
         });
     }
@@ -60,7 +64,6 @@
     <div class="settingsheading"><span class="largefocus"><strong>Settings</strong></span></div>
     <hr width="100%; size=2" style="margin-top:20px; margin-bottom:20px; color:gainsboro;"></hr>
     <div class="settingssubheading"><strong>Sorting Options</strong></div>
-    <div class="button_div" style="margin:auto;width:200px;"><button class="save_button" style="width:200px;color:black;font-family:Roboto;font-size:17px">Save</button></div>
     <script type="text/javascript" src="js/global_end.js"></script>
     <script type="text/javascript">
     </script>

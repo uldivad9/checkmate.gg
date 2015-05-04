@@ -44,11 +44,14 @@
 		}
 		
 		searchResults = [];
-		var sortBy = 0;
+		var sortBy = "nanodesu";
 		if ($.getUrlVar("sortBy") != undefined) {
 			sortBy = $.getUrlVar("sortBy")
 		} else {
-			sortBy = "relevancy"
+			sortBy = localStorage.sortBy;
+			if (sortBy == undefined) {
+				sortBy = "relevancy";
+			}
 		}
 		
 		if (sortBy === "relevancy") {
@@ -152,8 +155,8 @@
 			var out;
 			if (clear) {
 				out={}
-				for (var i=0; i<GLOBAL_RESULTS.length; i++) {
-					out[GLOBAL_RESULTS[i].id] = GLOBAL_RESULTS[i];
+				for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
+					out[GLOBAL_RESOURCES[i].id] = GLOBAL_RESOURCES[i];
 				}
 			} else {
 				out=JSON.parse(localStorage.storedResultData);
