@@ -253,7 +253,7 @@
 		
 		var drawScorePanel = function() {
 			$(".scorepanel *").remove();
-			$(".scorepanel").append("<div><span>+"+resourceInfo.score+"</span></div>");
+			$(".scorepanel").append("<div><span>"+resourceInfo.score+"</span></div>");
 			$(".scorepanel").append("<div class=\"scorebuttons\"></div>");
 			if (resourceInfo.vote == 0) {
 				$(".scorebuttons").append("<div>"+up_button_html+"</div><div>"+down_button_html+"</div>");
