@@ -9,7 +9,7 @@ var heart_button_filled_html = "<img class=\"heartbutton\" title=\"Favorite\" wi
 var gear_button_html = "<img class=\"gearbutton\" width=\"32px\" height=\"32px\" src=\"./assets/gear.png\" onmouseover=\"this.src='./assets/gear_shadow.png'\" onmouseout=\"this.src='./assets/gear.png'\">";
 var account_button_html = "<img class=\"accountbutton\" width=\"32px\" height=\"32px\" src=\"./assets/account.png\" onmouseover=\"this.src='./assets/account_shadow.png'\" onmouseout=\"this.src='./assets/account.png'\">";
 
-var extlink_button_html = "<img title=\"Link to resource\" width=\"32px\" height=\"32px\" src=\"./assets/extlink.png\" onmouseover=\"this.src='./assets/extlink_shadow.png'\" onmouseout=\"this.src='./assets/extlink.png'\">";
+var extlink_button_html = "<img class=\"extlinkbutton\" title=\"Link to resource\" width=\"32px\" height=\"32px\" src=\"./assets/extlink.png\" onmouseover=\"this.src='./assets/extlink_shadow.png'\" onmouseout=\"this.src='./assets/extlink.png'\">";
 
 var up_button_html = "<img class=\"upbutton\" width=\"15px\" height=\"15px\" src=\"./assets/arrow_up.png\" onmouseover=\"this.src='./assets/arrow_up_shadow.png'\" onmouseout=\"this.src='./assets/arrow_up.png'\">";
 var down_button_html = "<img class=\"downbutton\" width=\"15px\" height=\"15px\" src=\"./assets/arrow_down.png\" onmouseover=\"this.src='./assets/arrow_down_shadow.png'\" onmouseout=\"this.src='./assets/arrow_down.png'\">";
