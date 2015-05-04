@@ -20,6 +20,36 @@
     $( "#selectable" ).selectable();
     $('#selectable li:first').addClass('ui-selected');
     $(".save_button").button();
+    
+    var sortBy = "relevancy"// load this from local storage
+    
+    var refreshSorting = function() {
+        $("#sortcontainer").remove();
+        if (sortBy === "score") {
+            $(".settingssubheading").after("<div id=\"sortcontainer\"><p>Default sort by: &nbsp; &nbsp;<a id=\"sortbyrelevancy\" href=\"#\">Relevancy &nbsp; &nbsp; &nbsp;</a><strong>Popularity &nbsp; &nbsp; &nbsp;</strong><a id=\"sortbyrating\" href=\"#\">Elo Rating </a></p></div>");
+        } else if (sortBy === "rating") {
+            $(".settingssubheading").after("<div id=\"sortcontainer\"><p>Default sort by: &nbsp; &nbsp;<a id=\"sortbyrelevancy\" href=\"#\">Relevancy &nbsp; &nbsp; &nbsp;</a><a id=\"sortbyscore\" href=\"#\">Popularity &nbsp; &nbsp; &nbsp;</a><strong>Elo Rating </strong></p></div>");
+        } else {
+            $(".settingssubheading").after("<div id=\"sortcontainer\"><p>Default sort by: &nbsp; &nbsp;<strong>Relevancy &nbsp; &nbsp; &nbsp;</strong><a id=\"sortbyscore\" href=\"#\">Popularity &nbsp; &nbsp; &nbsp;</a><a id=\"sortbyrating\" href=\"#\">Elo Rating </a></p></div>");
+        }
+        
+        $("#sortbyscore").click(function() {
+            sortBy = "score";
+            refreshSorting();
+        });
+        
+        $("#sortbyrating").click(function() {
+            sortBy = "rating";
+            refreshSorting();
+        });
+        
+        $("#sortbyrelevancy").click(function() {
+            sortBy = "relevancy";
+            refreshSorting();
+        });
+    }
+    
+    refreshSorting();
   });
 
 </script>
@@ -30,11 +60,6 @@
     <div class="settingsheading"><span class="largefocus"><strong>Settings</strong></span></div>
     <hr width="100%; size=2" style="margin-top:20px; margin-bottom:20px; color:gainsboro;"></hr>
     <div class="settingssubheading"><strong>Sorting Options</strong></div>
-    <ol id = "selectable" style="list-style-type:none;">
-        <li class="ui-widget-content sorting_option">Default</li>
-        <li class="ui-widget-content sorting_option">User Rating</li>
-        <li class="ui-widget-content sorting_option">Relevancy</li>
-    </ul>
     <div class="button_div" style="margin:auto;width:200px;"><button class="save_button" style="width:200px;color:black;font-family:Roboto;font-size:17px">Save</button></div>
     <script type="text/javascript" src="js/global_end.js"></script>
     <script type="text/javascript">

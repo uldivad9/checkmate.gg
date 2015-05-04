@@ -353,6 +353,10 @@ hr {
 	text-align: center;
 }
 
+.settings_page  a{
+    text-decoration: none;
+}
+
 .settings_page .sorting_option {
 	padding:10px;
 	margin:10px;
