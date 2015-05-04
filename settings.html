@@ -27,11 +27,11 @@
     var refreshSorting = function() {
         $("#sortcontainer").remove();
         if (sortBy === "score") {
-            $(".settingssubheading").after("<div id=\"sortcontainer\"><p>Default sort by: &nbsp; &nbsp;<a id=\"sortbyrelevancy\" href=\"#\">Relevancy &nbsp; &nbsp; &nbsp;</a><strong>Popularity &nbsp; &nbsp; &nbsp;</strong><a id=\"sortbyrating\" href=\"#\">Elo Rating </a></p></div>");
+            $(".settingssubheading").after("<div id=\"sortcontainer\"><p>Default sort by: &nbsp; &nbsp;<a id=\"sortbyrelevancy\" href=\"javascript:void(0);\">Relevancy &nbsp; &nbsp; &nbsp;</a><strong>Popularity &nbsp; &nbsp; &nbsp;</strong><a id=\"sortbyrating\" href=\"javascript:void(0);\">Elo Rating </a></p></div>");
         } else if (sortBy === "rating") {
-            $(".settingssubheading").after("<div id=\"sortcontainer\"><p>Default sort by: &nbsp; &nbsp;<a id=\"sortbyrelevancy\" href=\"#\">Relevancy &nbsp; &nbsp; &nbsp;</a><a id=\"sortbyscore\" href=\"#\">Popularity &nbsp; &nbsp; &nbsp;</a><strong>Elo Rating </strong></p></div>");
+            $(".settingssubheading").after("<div id=\"sortcontainer\"><p>Default sort by: &nbsp; &nbsp;<a id=\"sortbyrelevancy\" href=\"javascript:void(0);\">Relevancy &nbsp; &nbsp; &nbsp;</a><a id=\"sortbyscore\" href=\"javascript:void(0);\">Popularity &nbsp; &nbsp; &nbsp;</a><strong>Elo Rating </strong></p></div>");
         } else {
-            $(".settingssubheading").after("<div id=\"sortcontainer\"><p>Default sort by: &nbsp; &nbsp;<strong>Relevancy &nbsp; &nbsp; &nbsp;</strong><a id=\"sortbyscore\" href=\"#\">Popularity &nbsp; &nbsp; &nbsp;</a><a id=\"sortbyrating\" href=\"#\">Elo Rating </a></p></div>");
+            $(".settingssubheading").after("<div id=\"sortcontainer\"><p>Default sort by: &nbsp; &nbsp;<strong>Relevancy &nbsp; &nbsp; &nbsp;</strong><a id=\"sortbyscore\" href=\"javascript:void(0);\">Popularity &nbsp; &nbsp; &nbsp;</a><a id=\"sortbyrating\" href=\"javascript:void(0);\">Elo Rating </a></p></div>");
         }
         
         $("#sortbyscore").click(function() {
