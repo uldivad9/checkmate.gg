@@ -42,11 +42,11 @@
 			var out;
 			if (clear) {
 				out={}
+				for (var i=0; i<GLOBAL_RESOURCES.length; i++) {
+					out[GLOBAL_RESOURCES[i].id] = GLOBAL_RESOURCES[i];
+				}
 			} else {
 				out=JSON.parse(localStorage.storedResultData);
-				for (var i=0; i<GLOBAL_RESULTS.length; i++) {
-					out[GLOBAL_RESULTS[i].id] = GLOBAL_RESULTS[i];
-				}
 			}
 			for (var i=0; i<searchResults.length; i++) {
 				out[searchResults[i].id] = searchResults[i];
@@ -99,6 +99,7 @@
 				searchResults[i].favorite = !searchResults[i].favorite;
 				refreshResults();
 				writeToCookie();
+				console.log("written to cookie");
 			});
 			$(".buttonpane:last").append("<div class=\"button\">"+extlink_button_html+"</div><div class=\"scorewidget\"></div>");
 			$(".scorewidget:last").append("<div class=\"scorebuttons\"></div>");
