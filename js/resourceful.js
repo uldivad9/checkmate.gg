@@ -25,6 +25,7 @@
 var NEXT_RID = 1;
 
 var GLOBAL_RESOURCES = [
+
 	{id: 1337420,
 	name: "A Primer to Caro-Kann",
 	tags: ["openings","caro-kann","intermediate"],
@@ -93,8 +94,9 @@ var GLOBAL_RESOURCES = [
 	{id: 1337422,
 	name: "Rook-King Endgames",
 	tags: ["endgame","beginner","video"],
-	description: "A decently thorough video discussing Rook-King endgames, and how to quickly analyze and play your own configurations.",
-	fullDescription: "Challenjour Vayne guide for chess",
+	description: "Video discussing Rook-King endgames, and how to quickly analyze and play your own configurations.",
+	fullDescription: "A decently thorough video discussing endgames in which only a King and a Rook remain: a configuration"+
+	" which every beginner needs to master. The video teaches how such a configuration can be analyzed to achieve a win over a stalemate.",
 	score: -10,
 	vote: -1,
 	rating: [1900,2000],
@@ -162,13 +164,15 @@ var GLOBAL_RESOURCES = [
 
 	{id: 1347423,
 	name: "Fundamental Chess Strategies for Beginners",
-	tags: ["beginner","improvement","strategies"],
+	tags: ["beginner","strategies"],
 	description: "A comprehensive list of useful strategies for those getting started",
-	fullDescription: "A comprehensive list of useful strategies for those getting started",
+	fullDescription: "For beginners there are a lot of ways to win at chess. These tactics"+
+	" have 3 common denominators: protecting the king, capturing enemy pieces, and capturing the enemy king."+
+	" These are the basic goals of the game. Here is a comprehensive list of useful strategies to help beginners reach these goals.",
 	score: +60,
 	vote: +1,
-	rating: [300,800],
-	url: "google.com",
+	rating: [500,1200],
+	url: "http://www.chesspursuit.com/",
 	favorite: false,
 	reviews:
 	[
@@ -184,7 +188,7 @@ var GLOBAL_RESOURCES = [
 	score: +6,
 	vote: -1,
 	rating: [2300,2900],
-	url: "google.com",
+	url: "https://www.google.com/webhp?hl=en#hl=en&q=grandmasters+chess+resources",
 	favorite: false,
 	reviews:
 	[
@@ -226,13 +230,13 @@ var GLOBAL_RESOURCES = [
 
 	{id: 1347426,
 	name: "The Art of Heroic Defense",
-	tags: ["defense","heroic"],
+	tags: ["defense","intermediate"],
 	description: "Contains a list of defense strategies",
-	fullDescription: "Covers various defense strategies as well as various types of analyses",
-	score: +30,
+	fullDescription: "George Zeigler covers various defense strategies and analyses their strengths and weaknesses.",
+	score: +49,
 	vote: +1,
 	rating: [1800,2100],
-	url: "google.com",
+	url: "https://www.sparkchess.com/the-art-of-heroic-defense.html",
 	favorite: true,
 	reviews:
 	[
@@ -242,13 +246,13 @@ var GLOBAL_RESOURCES = [
 
 	{id: 1347427,
 	name: "Lines and Focal Points: The Heart and Soul of a Combination",
-	tags: ["lines","focal", "combination"],
+	tags: ["lines","offense","midgame","intermediate"],
 	description: "A description and illustration of the Alekhine-Chatard attack",
-	fullDescription: "A description and illustration of the Alekhine-Chatard attack",
+	fullDescription: "george Zeigler presents a description and illustration of the Alekhine-Chatard attack",
 	score: +20,
 	vote: -1,
-	rating: [1900,2200],
-	url: "google.com",
+	rating: [1800,2100],
+	url: "https://www.sparkchess.com/lines-and-focal-points-the-heart-and-soul-of-a-combination.html",
 	favorite: false,
 	reviews:
 	[
@@ -272,6 +276,20 @@ var GLOBAL_RESOURCES = [
 	]
 	},
 
+	{id: 1347429,
+	name: "How to Play Chess: Overworked Pieces",
+	tags: ["intermediate","opening","midgame","sicilian","tempo"],
+	description: "How overreliance on few pieces can lead to sudden loss of tempo.",
+	fullDescription: "A post on the blog Kindred Kaleidoscope explaining how overworking a few pieces can"+
+	" give the opponent a window of opportunity to regain tempo. Gives a poignant example involving the Sicilian defense.",
+	score: +33,
+	vote: 0,
+	rating: [1900,2100],
+	url: "https://kindredspiritks.wordpress.com/2007/11/23/how-to-play-chess-overused-pieces",
+	favorite: true,
+	reviews:
+	[
+	
+	]
+	}
 ]
-
-var allTags = []
