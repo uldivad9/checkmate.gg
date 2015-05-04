@@ -11,6 +11,10 @@ body {
 	background-color: #FDFDED;
 }
 
+a:active {
+    color: orange;
+}
+
 .largefocus {
 	font-family: var(--main-sans);
 	font-size:30px;
