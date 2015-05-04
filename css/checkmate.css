@@ -347,6 +347,7 @@ hr {
     float:left;
     width:83%;
     word-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 .add_review_button {
