@@ -78,11 +78,11 @@ var GLOBAL_RESOURCES = [
 	name: "Aggression in the Opening",
 	tags: ["opening","offense","aggro"],
 	description: "A quick analysis of how to play the opening in a way that puts pressure on the opponent.",
-	fullDescription: "Facehunter deck with 30 leper gnomes.",
+	fullDescription: "It's like playing a Facehunter deck with 30 leper gnomes.",
 	score: 10,
 	vote: 1,
 	rating: [1400,1400],
-	url: "google.com",
+	url: "https://www.google.com/webhp?hl=en#hl=en&q=aggression+in+the+opening",
 	favorite: true,
 	reviews:
 	[
@@ -92,13 +92,13 @@ var GLOBAL_RESOURCES = [
 
 	{id: 1337422,
 	name: "Rook-King Endgames",
-	tags: ["endgame","historical"],
-	description: "A thorough discussion of historical Rook-King endgames, and how to quickly analyze and play your own configurations.",
+	tags: ["endgame","beginner","video"],
+	description: "A decently thorough video discussing Rook-King endgames, and how to quickly analyze and play your own configurations.",
 	fullDescription: "Challenjour Vayne guide for chess",
 	score: -10,
 	vote: -1,
 	rating: [1900,2000],
-	url: "google.com",
+	url: "https://www.youtube.com/watch?v=jtGVYnv91ps",
 	favorite: true,
 	reviews:
 	[

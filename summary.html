@@ -148,7 +148,7 @@
                 
                 $("#new_review_container").after($('<div>').attr("class", "review").attr("rid",NEXT_RID).append('<div class="review_image">\n<img src="./assets/pawn_avatar.png" width="80px" height="80px"/ style="margin:10px; padding:10px; border-radius:2px; border: 2px solid gainsboro;">\n</div>')
                     .append($('<div>').attr("class", "review_text").append(
-                        $('<p>').css("white-space","pre").html($("#new_review_text").val())).append(
+                        $('<p>').html($("#new_review_text").val())).append(
                             $('<p>').attr("class", "authordata").html("by infinitestory, "+now_m+"/"+now_d+"/"+now_y).append(
                                 edit_button
                             ).append(
@@ -169,7 +169,7 @@
                     if ($(this).attr("class") == "ui-icon ui-icon-check") {
                         $(this).attr("class", "ui-icon ui-icon-pencil")
                         var changeText = $(this).parent().parent().parent().find(".review_text textarea").first();
-                        var text = $("<p>").css("white-space", "pre").html(changeText.val());
+                        var text = $("<p>").html(changeText.val());
                         changeText.replaceWith(text);
 						var review = $(this).parent().parent().parent();
 						for (var i=0; i<resourceInfo.reviews.length; i++) {
@@ -205,7 +205,7 @@
 			if ($(this).attr("class") == "ui-icon ui-icon-check") {
 				$(this).attr("class", "ui-icon ui-icon-pencil")
 				var changeText = $(this).parent().parent().parent().find(".review_text textarea").first();
-				var text = $("<p>").css("white-space", "pre").html(changeText.val());
+				var text = $("<p>").html(changeText.val());
 				changeText.replaceWith(text);
 				var review = $(this).parent().parent().parent();
 				for (var i=0; i<resourceInfo.reviews.length; i++) {
@@ -253,7 +253,7 @@
 		
 		var drawScorePanel = function() {
 			$(".scorepanel *").remove();
-			$(".scorepanel").append("<div><span>+"+resourceInfo.score+"</span></div>");
+			$(".scorepanel").append("<div><span>"+resourceInfo.score+"</span></div>");
 			$(".scorepanel").append("<div class=\"scorebuttons\"></div>");
 			if (resourceInfo.vote == 0) {
 				$(".scorebuttons").append("<div>"+up_button_html+"</div><div>"+down_button_html+"</div>");
