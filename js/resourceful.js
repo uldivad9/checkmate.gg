@@ -164,7 +164,7 @@ var GLOBAL_RESOURCES = [
 
 	{id: 1347423,
 	name: "Fundamental Chess Strategies for Beginners",
-	tags: ["beginner","strategies"],
+	tags: ["beginner","strategy"],
 	description: "A comprehensive list of useful strategies for those getting started",
 	fullDescription: "For beginners there are a lot of ways to win at chess. These tactics"+
 	" have 3 common denominators: protecting the king, capturing enemy pieces, and capturing the enemy king."+
